@@ -1,0 +1,56 @@
+﻿using Core;
+using DiyBox.Core;
+using System;
+using System.Collections.Generic;
+
+namespace DiyBox.ConsoleApp
+{
+	public class DiyBoxProgram : IConsoleApp
+	{
+		private readonly IArgsParser<Size3d> parser;
+		private readonly IDictionary<string, IDescriptor> descriptors;
+
+		public DiyBoxProgram(
+			IArgsParser<Size3d> parser
+			, IDictionary<string, IDescriptor> descriptors)
+		{
+			this.parser = parser;
+			this.descriptors = descriptors;
+		}
+		
+		public void Main(string[] args)
+		{
+			try
+			{
+				var objectSize = parser.Parse(args);
+				var box = new Box(objectSize);
+				var sheet = new Sheet(box);
+				var waste = new Waste(box, sheet);
+				var boxAndWaste = new BoxAndWaste(box, waste);
+				Console.WriteLine(descriptors[Descriptors.ObjectDimensions].GetDescription(objectSize));
+				Console.WriteLine(descriptors[Descriptors.StartCreator].GetDescription());
+				NextStep();
+				Console.WriteLine(descriptors[Descriptors.PrepareSheet].GetDescription(sheet));
+				NextStep();
+				Console.WriteLine(descriptors[Descriptors.MarkSheetHorizontally].GetDescription(box));
+				NextStep();
+				Console.WriteLine(descriptors[Descriptors.MarkSheetVerticallyFront].GetDescription(boxAndWaste));
+				NextStep();
+				Console.WriteLine(descriptors[Descriptors.MarkSheetVerticallySide].GetDescription(boxAndWaste));
+				NextStep();
+				Console.WriteLine(descriptors[Descriptors.FoldBox].GetDescription());
+			}
+			catch (ArgumentException ex)
+			{
+				Console.WriteLine(
+					descriptors[Descriptors.Help].GetDescription(ex.Message));
+			}
+		}
+
+		private void NextStep()
+		{
+			Console.WriteLine(descriptors[Descriptors.NextStep].GetDescription());
+			Console.ReadLine();
+		}
+	}
+}
