@@ -4,4 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>..\..\Core\Core\bin\Release\net5.0\Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
