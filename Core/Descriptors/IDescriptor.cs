@@ -1,4 +1,4 @@
-﻿namespace Core
+﻿namespace DiyBox.Core
 {
 	public interface IDescriptor
 	{

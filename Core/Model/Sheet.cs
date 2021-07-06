@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core
+namespace DiyBox.Core
 {
 	public class Sheet
 	{

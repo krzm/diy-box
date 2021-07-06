@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Core;
+using System;
 using System.Globalization;
 using System.Threading;
 
-namespace Core
+namespace DiyBox.Core
 {
 	public class DiyBoxParser : IArgsParser<Size3d>
 	{
