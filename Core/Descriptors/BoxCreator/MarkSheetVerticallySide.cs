@@ -14,17 +14,17 @@ namespace DiyBox.Core
 			{
 				sb.AppendLine($"From top going down, mark line on {info.Waste.WasteHeight}.");
 				sb.AppendLine("Mark it with X as a waste.");
-				sb.AppendLine($"Next mark at {info.Box.Side.Fold.Height} down.");
-				sb.AppendLine($"Next mark at {info.Box.Side.Wall.Height} down.");
-				sb.AppendLine($"Check if remaining length is {info.Box.Side.Fold.Height}.");
+				sb.AppendLine($"Next mark at {info.Box.Side.Fold.Width} down.");
+				sb.AppendLine($"Next mark at {info.Box.Side.Wall.Width} down.");
+				sb.AppendLine($"Check if remaining length is {info.Box.Side.Fold.Width}.");
 				sb.AppendLine($"Check down again, if remaining length is {info.Waste.WasteHeight}.");
 				sb.AppendLine("Mark it with X as a waste.");
 			}
 			else
 			{
-				sb.AppendLine($"From top going dowan, mark line on {info.Box.Side.Fold.Height}.");
-				sb.AppendLine($"Next mark at {info.Box.Side.Wall.Height} down.");
-				sb.AppendLine($"Check if remaining length is {info.Box.Side.Fold.Height}.");
+				sb.AppendLine($"From top going dowan, mark line on {info.Box.Side.Fold.Width}.");
+				sb.AppendLine($"Next mark at {info.Box.Side.Wall.Width} down.");
+				sb.AppendLine($"Check if remaining length is {info.Box.Side.Fold.Width}.");
 			}
 			sb.AppendLine();
 			sb.AppendLine("Repeat step 3 and 4 on two remaining vertical lines.");

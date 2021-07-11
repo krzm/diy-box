@@ -8,43 +8,43 @@ namespace DiyBox.Tests
 		private const double Unit = .1;
 
 		[Theory]
-		[InlineData(5)]
-		public void Depth_produces_box_side_wall_width(
-			double depth)
+		[InlineData(10)]
+		public void Width_maps_to_box_side_wall_length(
+			double width)
 		{
-			var sut = new Box(new Size3d(Unit, Unit, depth));
+			var sut = new Box(new Size3d(Unit, width, Unit));
 
-			Assert.Equal(depth, sut.Side.Wall.Length);
+			Assert.Equal(width, sut.Side.Wall.Length);
 		}
 
 		[Theory]
 		[InlineData(10)]
-		public void Height_produces_box_side_wall_heigth(
+		public void Height_maps_to_box_side_wall_width(
 			double heigth)
 		{
-			var sut = new Box(new Size3d(Unit, heigth, Unit));
+			var sut = new Box(new Size3d(Unit, Unit, heigth));
 
-			Assert.Equal(heigth, sut.Side.Wall.Height);
+			Assert.Equal(heigth, sut.Side.Wall.Width);
 		}
 
 		[Theory]
-		[InlineData(5)]
-		public void Depth_produces_box_side_fold_width(
-			double depth)
+		[InlineData(10)]
+		public void Width_maps_to_box_side_fold_length(
+			double width)
 		{
-			var sut = new Box(new Size3d(Unit, Unit, depth));
+			var sut = new Box(new Size3d(Unit, width, Unit));
 
-			Assert.Equal(depth, sut.Side.Fold.Length);
+			Assert.Equal(width, sut.Side.Fold.Length);
 		}
 
 		[Theory]
-		[InlineData(20)]
-		public void Length_produces_box_side_fold_heigth(
+		[InlineData(10)]
+		public void Length_maps_to_box_side_fold_width(
 			double length)
 		{
 			var sut = new Box(new Size3d(length, Unit, Unit));
 
-			Assert.Equal(length/2, sut.Side.Fold.Height);
+			Assert.Equal(length/2, sut.Side.Fold.Width);
 		}
 	}
 }

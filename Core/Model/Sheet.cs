@@ -24,8 +24,8 @@ namespace DiyBox.Core
 
 		private double GetSheetHeight()
 		{
-			var frontHeight = box.Front.Wall.Height + 2 * box.Front.Fold.Height;
-			var sideHeight = box.Side.Wall.Height + 2 * box.Side.Fold.Height;
+			var frontHeight = box.Front.Wall.Width + 2 * box.Front.Fold.Width;
+			var sideHeight = box.Side.Wall.Width + 2 * box.Side.Fold.Width;
 			return Math.Max(frontHeight, sideHeight);
 		}
 	}

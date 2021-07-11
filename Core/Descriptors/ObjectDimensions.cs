@@ -14,7 +14,7 @@ namespace DiyBox.Core
 			sb.AppendLine("second longest-heigth.");
 			sb.AppendLine("Depth is assumed to be shortest dimmension.");
 			sb.AppendLine();
-			sb.AppendLine($"Object has length {size3d.Length}, height {size3d.Height}, depth {size3d.Depth}.");
+			sb.AppendLine($"Object has length {size3d.Length}, height {size3d.Width}, depth {size3d.Height}.");
 			return sb.ToString();
 		}
 	}

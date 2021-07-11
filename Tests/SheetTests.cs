@@ -28,7 +28,7 @@ namespace DiyBox.Tests
 		{
 			var sut = new Sheet(new Box(new Size3d(length, height, depth)));
 
-			Assert.Equal(sheetHeigth, sut.Size.Height);
+			Assert.Equal(sheetHeigth, sut.Size.Width);
 		}
 	}
 }

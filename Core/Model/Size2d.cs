@@ -8,22 +8,22 @@ namespace DiyBox.Core
 
 		public double Length { get; protected set; }
 
-		public double Height { get; protected set; }
+		public double Width { get; protected set; }
 
 		public Size2d(
 			double length
-			, double height)
+			, double width)
 		{
 			if (length <= 0) throw
 				new ArgumentException(
 					ErrorMessage
 					, nameof(length));
-			if (height <= 0) throw 
+			if (width <= 0) throw 
 				new ArgumentException(
 					ErrorMessage
-					, nameof(height));
+					, nameof(width));
 			Length = length;
-			Height = height;
+			Width = width;
 		}
 
 		public override bool Equals(object obj)
@@ -35,17 +35,17 @@ namespace DiyBox.Core
 		{
 			return other != null &&
 				Length == other.Length &&
-				Height == other.Height;
+				Width == other.Width;
 		}
 
 		public override int GetHashCode()
 		{
-			return (Length, Height).GetHashCode();
+			return (Length, Width).GetHashCode();
 		}
 
 		public override string ToString()
 		{
-			return $"Size2d(Length={Length}, Height={Height})";
+			return $"Size2d({nameof(Length)}={Length}, {nameof(Width)}={Width})";
 		}
 	}
 }

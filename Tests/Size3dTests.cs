@@ -8,21 +8,21 @@ namespace DiyBox.Tests
 	{
 		[Theory]
 		[InlineData(-1, 1, 1, "length")]
-		[InlineData(1, -1, 1, "height")]
-		[InlineData(1, 1, -1, "depth")]
+		[InlineData(1, -1, 1, "width")]
+		[InlineData(1, 1, -1, "height")]
 		[InlineData(0, 1, 1, "length")]
-		[InlineData(1, 0, 1, "height")]
-		[InlineData(1, 1, 0, "depth")]
-		[InlineData(1, 1, -1.1, "depth")]
+		[InlineData(1, 0, 1, "width")]
+		[InlineData(1, 1, 0, "height")]
+		[InlineData(1, 1, -1.1, "height")]
 		public void Size3d_throws_on_negative_and_zero(
 			double length
+			, double width
 			, double height
-			, double depth
 			, string param)
 		{
 			Assert.Throws<ArgumentException>(
 				param
-				, () => new Size3d(length, height, depth));
+				, () => new Size3d(length, width, height));
 		}
 
 		[Theory]
@@ -31,15 +31,15 @@ namespace DiyBox.Tests
 		[InlineData(1, 1, 1, 2, 1, 1, false)]
 		public void Size3d_equals(
 			double length
+			, double width
 			, double height
-			, double depth
 			, double length2
+			, double width2
 			, double height2
-			, double depth2
 			, bool expected)
 		{
-			var sut = new Size3d(length, height, depth);
-			var obj = new Size3d(length2, height2, depth2);
+			var sut = new Size3d(length, width, height);
+			var obj = new Size3d(length2, width2, height2);
 
 			var actual = sut.Equals(obj);
 
@@ -73,7 +73,7 @@ namespace DiyBox.Tests
 
 			var actual = sut.ToString();
 
-			Assert.Equal("Size3d(Length=20, Height=10, Depth=5)", actual);
+			Assert.Equal("Size3d(Length=20, Width=10, Height=5)", actual);
 		}
 	}
 }

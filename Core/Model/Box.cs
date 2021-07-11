@@ -19,15 +19,15 @@ namespace DiyBox.Core
 						, size.Height)
 					, new Size2d(
 						size.Length
-						, size.Depth / 2));
+						, size.Width/2));
 
 			Side =
 				new BoxWall(
 					new Size2d(
-						size.Depth
+						size.Width
 						, size.Height)
 					, new Size2d(
-						size.Depth
+						size.Width
 						, size.Length / 2));
 
 			WallFlap = GetWallFlap();

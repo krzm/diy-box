@@ -8,8 +8,8 @@ namespace DiyBox.Tests
 		private const double Unit = .1;
 
 		[Theory]
-		[InlineData(20)]
-		public void Length_produces_box_front_wall_width(
+		[InlineData(10)]
+		public void Length_maps_to_box_front_wall_length(
 			double length)
 		{
 			var sut = new Box(new Size3d(length, Unit, Unit));
@@ -19,17 +19,17 @@ namespace DiyBox.Tests
 
 		[Theory]
 		[InlineData(10)]
-		public void Height_produces_box_front_wall_heigth(
+		public void Heigth_maps_to_box_front_wall_width(
 			double heigth)
 		{
-			var sut = new Box(new Size3d(Unit, heigth, Unit));
+			var sut = new Box(new Size3d(Unit, Unit, heigth));
 
-			Assert.Equal(heigth, sut.Front.Wall.Height);
+			Assert.Equal(heigth, sut.Front.Wall.Width);
 		}
 
 		[Theory]
-		[InlineData(20)]
-		public void Length_produces_box_front_fold_width(
+		[InlineData(10)]
+		public void Length_maps_to_box_front_fold_length(
 			double length)
 		{
 			var sut = new Box(new Size3d(length, Unit, Unit));
@@ -38,13 +38,13 @@ namespace DiyBox.Tests
 		}
 
 		[Theory]
-		[InlineData(5.0)]
-		public void Depth_produces_box_front_fold_height(
-			double depth)
+		[InlineData(10)]
+		public void Width_maps_to_box_front_fold_width(
+			double width)
 		{
-			var sut = new Box(new Size3d(Unit, Unit, depth));
+			var sut = new Box(new Size3d(Unit, width, Unit));
 
-			Assert.Equal(depth/2, sut.Front.Fold.Height);
+			Assert.Equal(width / 2, sut.Front.Fold.Width);
 		}
 	}
 }

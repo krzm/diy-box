@@ -8,9 +8,9 @@ namespace DiyBox.Tests
 	{
 		[Theory]
 		[InlineData(-1, 1, "length")]
-		[InlineData(1, -1, "height")]
+		[InlineData(1, -1, "width")]
 		[InlineData(0, 1, "length")]
-		[InlineData(1, 0, "height")]
+		[InlineData(1, 0, "width")]
 		[InlineData(-1.1, 1, "length")]
 		public void Size2d_throws_on_negative_and_zero(
 			double length
@@ -68,7 +68,7 @@ namespace DiyBox.Tests
 
 			var actual = sut.ToString();
 
-			Assert.Equal("Size2d(Length=20, Height=10)", actual);
+			Assert.Equal("Size2d(Length=20, Width=10)", actual);
 		}
 	}
 }
