@@ -3,7 +3,7 @@ using Xunit;
 
 namespace DiyBox.Tests
 {
-	public class BoxSideTDDTests
+	public class BoxSideTests
 	{
 		private const double Unit = .1;
 

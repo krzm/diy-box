@@ -3,7 +3,7 @@ using Xunit;
 
 namespace DiyBox.Tests
 {
-	public class SheetTDDTests
+	public class SheetTests
 	{
 		[Theory]
 		[InlineData(2, 2, 2, 9)]

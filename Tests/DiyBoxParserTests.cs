@@ -4,7 +4,7 @@ using Xunit;
 
 namespace DiyBox.Tests
 {
-	public class DiyBoxParserTDDTests
+	public class DiyBoxParserTests
 	{
 		[Theory]
 		[InlineData(new object[] {
