@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DiyBox.Core
+﻿namespace DiyBox.Core
 {
 	public class Box
 	{
@@ -35,12 +33,9 @@ namespace DiyBox.Core
 
 		private double GetWallFlap()
 		{
-			var max = Math.Max(
-				Front.Wall.Length
-				, Side.Wall.Length);
-			int foldByPercent = (int)(max * 0.1);
-			if (foldByPercent < 1) return 1;
-			else return foldByPercent;
+			if (Front.Wall.Length <= 5) return Front.Wall.Length;
+			var flop = (int)(Front.Wall.Length / 4);
+			return flop >= 5 ? (flop <= 10 ? flop : 10) : 5;
 		}
 	}
 }

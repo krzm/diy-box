@@ -6,7 +6,7 @@ namespace DiyBox.Tests
 	public class SheetTests
 	{
 		[Theory]
-		[InlineData(2, 2, 2, 9)]
+		[InlineData(2, 2, 2, 10)]
 		public void Box_produces_sheet_Length(
 			double length
 			, double height
