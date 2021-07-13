@@ -26,7 +26,7 @@
 						, size.Height)
 					, new Size2d(
 						size.Width
-						, size.Length / 2));
+						, size.Width / 2));
 
 			WallFlap = GetWallFlap();
 		}

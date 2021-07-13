@@ -39,12 +39,12 @@ namespace DiyBox.Tests
 
 		[Theory]
 		[InlineData(10)]
-		public void Length_maps_to_box_side_fold_width(
-			double length)
+		public void Width_maps_to_box_side_fold_width(
+			double width)
 		{
-			var sut = new Box(new Size3d(length, Unit, Unit));
+			var sut = new Box(new Size3d(Unit, width, Unit));
 
-			Assert.Equal(length/2, sut.Side.Fold.Width);
+			Assert.Equal(width/2, sut.Side.Fold.Width);
 		}
 	}
 }
