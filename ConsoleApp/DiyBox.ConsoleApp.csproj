@@ -14,6 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Console.Lib">
+      <HintPath>..\..\Console\Console.Lib\bin\Release\net5.0\Console.Lib.dll</HintPath>
+    </Reference>
     <Reference Include="Core">
       <HintPath>..\..\Core\Core\bin\Release\net5.0\Core.dll</HintPath>
     </Reference>
