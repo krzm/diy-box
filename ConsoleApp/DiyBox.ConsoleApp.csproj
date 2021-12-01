@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,11 +14,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Console.Lib">
-      <HintPath>..\..\Console\Console.Lib\bin\Release\net5.0\Console.Lib.dll</HintPath>
-    </Reference>
     <Reference Include="Core">
-      <HintPath>..\..\Core\Core\bin\Release\net5.0\Core.dll</HintPath>
+      <HintPath>..\..\Core\Core\bin\Release\net6.0\Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Core.Lib">
+      <HintPath>..\..\Core\Core.Lib\bin\Release\net6.0\Core.Lib.dll</HintPath>
+    </Reference>
+     <Reference Include="Console.Lib">
+      <HintPath>..\..\Console\Console.Lib\bin\Release\net6.0\Console.Lib.dll</HintPath>
     </Reference>
   </ItemGroup>
 

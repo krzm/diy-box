@@ -17,8 +17,8 @@ namespace DiyBox.ConsoleApp
 
 		public override void RegisterDependencies()
 		{
-			Container.RegisterType<IConsoleApp, DiyBoxProgram>();
-			Container.RegisterType<IArgsParser<Size3d>, DiyBoxParser>();
+			//Container.RegisterType<IAppProgram, DiyBoxProgram>();
+			//Container.RegisterType<IArgsParser<Size3d>, DiyBoxParser>();
 			RegisterDescriptorDictionary();
 		}
 

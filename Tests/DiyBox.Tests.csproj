@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <Reference Include="Core">
-      <HintPath>..\..\Core\Core\bin\Release\net5.0\Core.dll</HintPath>
+      <HintPath>..\..\Core\Core\bin\Release\net6.0\Core.dll</HintPath>
     </Reference>
   </ItemGroup>
 

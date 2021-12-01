@@ -7,10 +7,10 @@ namespace DiyBox.ConsoleApp
 	{
 		static void Main(string[] args)
 		{
-			var dependencyProvider = new DiyBoxDependencyProvider(new UnityContainer().AddExtension(new Diagnostic()));
-			dependencyProvider.RegisterDependencies();
-			var app = dependencyProvider.Container.Resolve<IConsoleApp>();
-			app.Main(args);
+			IBootstraper booter = new Bootstraper(
+				new DependencyCollection(
+					new UnityContainer().AddExtension(new Diagnostic())));
+			booter.Boot(args);
 		}
 	}
 }

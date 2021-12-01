@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <Reference Include="Console.Lib">
-      <HintPath>..\..\Console\Console.Lib\bin\Release\net5.0\Console.Lib.dll</HintPath>
+      <HintPath>..\..\Console\Console.Lib\bin\Release\net6.0\Console.Lib.dll</HintPath>
     </Reference>
   </ItemGroup>
 

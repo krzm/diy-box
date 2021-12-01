@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DiyBox.ConsoleApp
 {
-	public class DiyBoxProgram : IConsoleApp
+	public class DiyBoxProgram : IAppProgram
 	{
 		private readonly IArgsParser<Size3d> parser;
 		private readonly IDictionary<string, IDescriptor> descriptors;
