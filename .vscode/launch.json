@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/ConsoleApp/bin/Debug/net6.0/DiyBox.ConsoleApp.dll",
+            "program": "${workspaceFolder}/DiyBox.ConsoleApp/bin/Debug/net6.0/DiyBox.ConsoleApp.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/ConsoleApp",
+            "cwd": "${workspaceFolder}/DiyBox.ConsoleApp",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "integratedTerminal",
             "stopAtEntry": false

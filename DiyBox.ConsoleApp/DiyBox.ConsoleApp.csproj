@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\DiyBox.Core.csproj" />
+    <ProjectReference Include="..\DiyBox.Core\DiyBox.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
