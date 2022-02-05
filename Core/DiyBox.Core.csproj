@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Console.Lib">
-      <HintPath>..\..\Console\Console.Lib\bin\Release\net6.0\Console.Lib.dll</HintPath>
-    </Reference>
+    <Reference Include="CLIFramework">
+		  <HintPath>..\..\build\Build\cli-framework\CLIFramework\CLIFramework.dll</HintPath>
+	  </Reference>
   </ItemGroup>
 
 </Project>

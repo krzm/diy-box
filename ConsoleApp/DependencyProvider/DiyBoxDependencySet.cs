@@ -1,21 +1,25 @@
-using System.Collections.Generic;
+﻿using CLIFramework;
+using DIHelper;
 using DIHelper.Unity;
 using DiyBox.Core;
+using System.Collections.Generic;
 using Unity;
 
 namespace DiyBox.ConsoleApp;
 
-public class AppOutput 
+public class DiyBoxDependencySet 
 	: UnityDependencySet
 {
-	public AppOutput(
-		IUnityContainer container) 
-		: base(container)
+	public DiyBoxDependencySet(
+		IUnityContainer unityContainer) : 
+			base(unityContainer)
 	{
 	}
 
 	public override void Register()
 	{
+		Container.RegisterType<IAppProgram, DiyBoxProgram>();
+		Container.RegisterType<IArgsParser<Size3d>, DiyBoxParser>();
 		RegisterDescriptorDictionary();
 	}
 
