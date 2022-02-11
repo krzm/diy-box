@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Reference Include="CLIFramework">
-		  <HintPath>..\..\build\Build\cli-framework\CLIFramework\CLIFramework.dll</HintPath>
+		  <HintPath>..\..\..\Build\cli-framework\CLIFramework\CLIFramework.dll</HintPath>
 	  </Reference>
   </ItemGroup>
 

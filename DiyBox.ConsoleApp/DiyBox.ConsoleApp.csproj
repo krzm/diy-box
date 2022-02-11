@@ -15,13 +15,13 @@
 
   <ItemGroup>
     <Reference Include="DIHelper">
-			<HintPath>..\..\build\Build\di-helper\DIHelper\DIHelper.dll</HintPath>
+			<HintPath>..\..\..\Build\di-helper\DIHelper\DIHelper.dll</HintPath>
 		</Reference>
     <Reference Include="CLIFramework">
-		  <HintPath>..\..\build\Build\cli-framework\CLIFramework\CLIFramework.dll</HintPath>
+		  <HintPath>..\..\..\Build\cli-framework\CLIFramework\CLIFramework.dll</HintPath>
 	  </Reference>
     <Reference Include="CommandDotNet.Helper">
-		  <HintPath>..\..\build\Build\commanddotnet-helper\CommandDotNet.Helper\CommandDotNet.Helper.dll</HintPath>
+		  <HintPath>..\..\..\Build\commanddotnet-helper\CommandDotNet.Helper\CommandDotNet.Helper.dll</HintPath>
 	  </Reference>
   </ItemGroup>
 
