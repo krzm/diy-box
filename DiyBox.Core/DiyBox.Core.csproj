@@ -4,6 +4,14 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
+  <!--Debug refs-->
+  <!-- <ItemGroup>
+    <Reference Include="CLIFramework">
+			<HintPath>..\..\cli-framework\CLIFramework\bin\Debug\net6.0\CLIFramework.dll</HintPath>
+		</Reference>
+  </ItemGroup> -->
+	
+  <!--Release refs-->
   <ItemGroup>
     <Reference Include="CLIFramework">
 		  <HintPath>..\..\..\Build\cli-framework\CLIFramework\CLIFramework.dll</HintPath>

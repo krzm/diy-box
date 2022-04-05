@@ -13,15 +13,23 @@
     <ProjectReference Include="..\DiyBox.Core\DiyBox.Core.csproj" />
   </ItemGroup>
 
+  <!--Debug refs-->
+  <!-- <ItemGroup>
+    <Reference Include="DIHelper">
+			<HintPath>..\..\di-helper\DIHelper\bin\Debug\net6.0\DIHelper.dll</HintPath>
+		</Reference>
+    <Reference Include="CLIFramework">
+			<HintPath>..\..\cli-framework\CLIFramework\bin\Debug\net6.0\CLIFramework.dll</HintPath>
+		</Reference>
+  </ItemGroup> -->
+  
+	<!--Release refs-->
   <ItemGroup>
     <Reference Include="DIHelper">
 			<HintPath>..\..\..\Build\di-helper\DIHelper\DIHelper.dll</HintPath>
 		</Reference>
     <Reference Include="CLIFramework">
 		  <HintPath>..\..\..\Build\cli-framework\CLIFramework\CLIFramework.dll</HintPath>
-	  </Reference>
-    <Reference Include="CommandDotNet.Helper">
-		  <HintPath>..\..\..\Build\commanddotnet-helper\CommandDotNet.Helper\CommandDotNet.Helper.dll</HintPath>
 	  </Reference>
   </ItemGroup>
 
