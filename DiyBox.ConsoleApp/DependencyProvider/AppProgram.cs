@@ -23,7 +23,7 @@ public class AppProgram<TProgram>
             new object[]
             {
                 Container.Resolve<IArgsParser<Size3d>>()
-                , Container.Resolve<IDictionary<string, IDescriptor>>()
+                , Container.Resolve<IDictionary<Descriptors, IDescriptor>>()
             });
     }
 }

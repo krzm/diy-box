@@ -10,16 +10,7 @@ public class UnityDependencySuite
 			base(container)
 	{
 	}
-
-	public override void Register()
-	{
-		//RegisterConsoleInput();
-		//RegisterConsoleOutput();
-		RegisterSet<DiyBoxDependencySet>();
-		//RegisterProgram();
-		base.Register();
-	}
-
+	
 	protected override void RegisterConsoleInput() => 
 		RegisterSet<AppInput>();
 

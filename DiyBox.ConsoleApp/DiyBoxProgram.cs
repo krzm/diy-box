@@ -10,11 +10,11 @@ public class DiyBoxProgram
 	: IAppProgram
 {
 	private readonly IArgsParser<Size3d> parser;
-	private readonly IDictionary<string, IDescriptor> descriptors;
+	private readonly IDictionary<Descriptors, IDescriptor> descriptors;
 
 	public DiyBoxProgram(
 		IArgsParser<Size3d> parser
-		, IDictionary<string, IDescriptor> descriptors)
+		, IDictionary<Descriptors, IDescriptor> descriptors)
 	{
 		this.parser = parser;
 		this.descriptors = descriptors;
@@ -45,7 +45,7 @@ public class DiyBoxProgram
 		catch (ArgumentException ex)
 		{
 			System.Console.WriteLine(
-				descriptors[Descriptors.Help].GetDescription(ex.Message));
+				descriptors[Descriptors.HelpDescriptor].GetDescription(ex.Message));
 		}
 		return 0;
 	}

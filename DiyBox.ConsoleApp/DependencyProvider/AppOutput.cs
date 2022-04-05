@@ -16,33 +16,76 @@ public class AppOutput
 
 	public override void Register()
 	{
+		RegisterDescriptors();
 		RegisterDescriptorDictionary();
 	}
 
-	private void RegisterDescriptorDictionary()
-	{
-		Container.RegisterType<IDescriptor, HelpDescriptor>(Descriptors.Help);
-		Container.RegisterType<IDescriptor, ObjectDimensions>(Descriptors.ObjectDimensions);
-		Container.RegisterType<IDescriptor, StartCreator>(Descriptors.StartCreator);
-		Container.RegisterType<IDescriptor, NextStep>(Descriptors.NextStep);
-		Container.RegisterType<IDescriptor, PrepareSheet>(Descriptors.PrepareSheet);
-		Container.RegisterType<IDescriptor, MarkSheetHorizontally>(Descriptors.MarkSheetHorizontally);
-		Container.RegisterType<IDescriptor, MarkSheetVerticallyFront>(Descriptors.MarkSheetVerticallyFront);
-		Container.RegisterType<IDescriptor, MarkSheetVerticallySide>(Descriptors.MarkSheetVerticallySide);
-		Container.RegisterType<IDescriptor, FoldBox>(Descriptors.FoldBox);
+    private void RegisterDescriptors()
+    {
+		RegisterDescriptor<HelpDescriptor>(
+			Descriptors.HelpDescriptor);
+		RegisterDescriptor<ObjectDimensions>(
+			Descriptors.ObjectDimensions);
+		RegisterDescriptor<StartCreator>(
+			Descriptors.StartCreator);
+		RegisterDescriptor<NextStep>(
+			Descriptors.NextStep);
+		RegisterDescriptor<PrepareSheet>(
+			Descriptors.PrepareSheet);
+		RegisterDescriptor<MarkSheetHorizontally>(
+			Descriptors.MarkSheetHorizontally);
+		RegisterDescriptor<MarkSheetVerticallyFront>(
+			Descriptors.MarkSheetVerticallyFront);
+		RegisterDescriptor<MarkSheetVerticallySide>(
+			Descriptors.MarkSheetVerticallySide);
+		RegisterDescriptor<FoldBox>(
+			Descriptors.FoldBox);
+    }
 
-		Container.RegisterFactory<IDictionary<string, IDescriptor>>(
-			m => new Dictionary<string, IDescriptor>
-			{
-				{ Descriptors.Help, m.Resolve<IDescriptor>( Descriptors.Help) }
-				, { Descriptors.ObjectDimensions, m.Resolve<IDescriptor>( Descriptors.ObjectDimensions) }
-				, { Descriptors.StartCreator, m.Resolve<IDescriptor>( Descriptors.StartCreator) }
-				, { Descriptors.NextStep, m.Resolve<IDescriptor>( Descriptors.NextStep) }
-				, { Descriptors.PrepareSheet, m.Resolve<IDescriptor>( Descriptors.PrepareSheet) }
-				, { Descriptors.MarkSheetHorizontally, m.Resolve<IDescriptor>( Descriptors.MarkSheetHorizontally) }
-				, { Descriptors.MarkSheetVerticallyFront, m.Resolve<IDescriptor>( Descriptors.MarkSheetVerticallyFront) }
-				, { Descriptors.MarkSheetVerticallySide, m.Resolve<IDescriptor>( Descriptors.MarkSheetVerticallySide) }
-				, { Descriptors.FoldBox, m.Resolve<IDescriptor>( Descriptors.FoldBox) }
-			});
+	private void RegisterDescriptor<TDescriptor>(Descriptors descriptor)
+		where TDescriptor : IDescriptor
+	{
+		Container.RegisterType<IDescriptor, TDescriptor>(descriptor.ToString());
+	}
+
+    private void RegisterDescriptorDictionary()
+	{
+		var descriptorDictionary = new Dictionary<Descriptors, IDescriptor>();
+		Container.RegisterFactory<IDictionary<Descriptors, IDescriptor>>(
+			c => FillDictionary(c, descriptorDictionary));
+	}
+
+    private IDictionary<Descriptors, IDescriptor> FillDictionary(
+		IUnityContainer c
+		, IDictionary<Descriptors, IDescriptor> d)
+    {
+		Add(c, d, Descriptors.HelpDescriptor);
+		Add(c, d, Descriptors.ObjectDimensions);
+		Add(c, d, Descriptors.StartCreator);
+		Add(c, d, Descriptors.NextStep);
+		Add(c, d, Descriptors.PrepareSheet);
+		Add(c, d, Descriptors.MarkSheetHorizontally);
+		Add(c, d, Descriptors.MarkSheetVerticallyFront);
+		Add(c, d, Descriptors.MarkSheetVerticallySide);
+		Add(c, d, Descriptors.FoldBox);
+		return d;
+    }
+
+	private void Add(
+		IUnityContainer c
+		, IDictionary<Descriptors, IDescriptor> d
+		, Descriptors de)
+	{
+		d.Add(
+			de
+			, ResolveDescriptor(c, de));
+	}
+
+    private IDescriptor ResolveDescriptor(
+		IUnityContainer c
+		, Descriptors descriptor)
+	{
+		return c.Resolve<IDescriptor>(
+			descriptor.ToString());
 	}
 }
