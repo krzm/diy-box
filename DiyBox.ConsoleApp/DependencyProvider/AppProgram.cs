@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using CLIFramework;
 using DIHelper;
 using DiyBox.Core;
+using Serilog;
 using Unity;
 using Unity.Injection;
 
@@ -24,6 +25,7 @@ public class AppProgram<TProgram>
             {
                 Container.Resolve<IArgsParser<Size3d>>()
                 , Container.Resolve<IDictionary<Descriptors, IDescriptor>>()
+                , Container.Resolve<ILogger>()
             });
     }
 }

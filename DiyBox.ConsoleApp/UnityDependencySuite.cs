@@ -1,3 +1,5 @@
+using Config.Wrapper.Unity;
+using Serilog.Wrapper.Unity;
 using Unity;
 
 namespace DiyBox.ConsoleApp;
@@ -11,6 +13,12 @@ public class UnityDependencySuite
 	{
 	}
 	
+	protected override void RegisterAppData()
+    {
+        RegisterSet<AppLoggerSet>();
+        RegisterSet<AppConfigSet>();
+    }
+
 	protected override void RegisterConsoleInput() => 
 		RegisterSet<AppInput>();
 

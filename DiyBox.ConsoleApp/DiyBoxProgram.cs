@@ -1,6 +1,7 @@
 ﻿using CLIFramework;
 using DIHelper;
 using DiyBox.Core;
+using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -11,14 +12,17 @@ public class DiyBoxProgram
 {
 	private readonly IArgsParser<Size3d> parser;
 	private readonly IDictionary<Descriptors, IDescriptor> descriptors;
+    private readonly ILogger logger;
 
-	public DiyBoxProgram(
+    public DiyBoxProgram(
 		IArgsParser<Size3d> parser
-		, IDictionary<Descriptors, IDescriptor> descriptors)
+		, IDictionary<Descriptors, IDescriptor> descriptors
+		, ILogger logger)
 	{
 		this.parser = parser;
 		this.descriptors = descriptors;
-	}
+        this.logger = logger;
+    }
 	
 	public int Main(string[] args)
 	{
@@ -29,30 +33,51 @@ public class DiyBoxProgram
 			var sheet = new Sheet(box);
 			var waste = new Waste(box, sheet);
 			var boxAndWaste = new BoxAndWaste(box, waste);
-			System.Console.WriteLine(descriptors[Descriptors.ObjectDimensions].GetDescription(objectSize));
-			System.Console.WriteLine(descriptors[Descriptors.StartCreator].GetDescription());
+			GetText(
+				Descriptors.ObjectDimensions
+				, objectSize);
+			GetText(Descriptors.StartCreator);
 			NextStep();
-			System.Console.WriteLine(descriptors[Descriptors.PrepareSheet].GetDescription(sheet));
+			GetText(
+				Descriptors.PrepareSheet
+				, sheet);
 			NextStep();
-			System.Console.WriteLine(descriptors[Descriptors.MarkSheetHorizontally].GetDescription(box));
+			GetText(
+				Descriptors.MarkSheetHorizontally
+				, box);
 			NextStep();
-			System.Console.WriteLine(descriptors[Descriptors.MarkSheetVerticallyFront].GetDescription(boxAndWaste));
+			GetText(
+				Descriptors.MarkSheetVerticallyFront
+				, boxAndWaste);
 			NextStep();
-			System.Console.WriteLine(descriptors[Descriptors.MarkSheetVerticallySide].GetDescription(boxAndWaste));
+			GetText(
+				Descriptors.MarkSheetVerticallySide
+				, boxAndWaste);
 			NextStep();
-			System.Console.WriteLine(descriptors[Descriptors.FoldBox].GetDescription());
+			GetText(Descriptors.FoldBox);
 		}
 		catch (ArgumentException ex)
 		{
-			System.Console.WriteLine(
-				descriptors[Descriptors.HelpDescriptor].GetDescription(ex.Message));
+			GetText(
+				Descriptors.HelpDescriptor
+				, ex.Message);
 		}
 		return 0;
 	}
 
+	private void GetText(
+		Descriptors descriptor
+		, object data = null)
+	{
+		logger.Information(
+			descriptors[descriptor]
+				.GetDescription(data));
+	}
+
     private void NextStep()
 	{
-		System.Console.WriteLine(descriptors[Descriptors.NextStep].GetDescription());
+		GetText(
+			Descriptors.NextStep);
 		System.Console.ReadLine();
 	}
 }
