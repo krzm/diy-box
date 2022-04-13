@@ -3,12 +3,12 @@ using DIHelper.Unity;
 using DiyBox.Core;
 using Unity;
 
-namespace DiyBox.ConsoleApp;
+namespace DiyBox.Core;
 
-public class AppOutput 
+public class DescriptorSet 
 	: UnityDependencySet
 {
-	public AppOutput(
+	public DescriptorSet(
 		IUnityContainer container) 
 		: base(container)
 	{

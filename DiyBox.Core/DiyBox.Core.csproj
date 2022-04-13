@@ -4,18 +4,22 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
+   <ItemGroup>
+    <PackageReference Include="Unity" Version="5.11.10" />
+  </ItemGroup>
+
   <!--Debug refs-->
   <!-- <ItemGroup>
-    <Reference Include="CLIFramework">
-			<HintPath>..\..\cli-framework\CLIFramework\bin\Debug\net6.0\CLIFramework.dll</HintPath>
+    <Reference Include="DIHelper">
+			<HintPath>..\..\di-helper\DIHelper\bin\Debug\net6.0\DIHelper.dll</HintPath>
 		</Reference>
   </ItemGroup> -->
-	
-  <!--Release refs-->
+  
+	<!--Release refs-->
   <ItemGroup>
-    <Reference Include="CLIFramework">
-		  <HintPath>..\..\..\Build\cli-framework\CLIFramework\CLIFramework.dll</HintPath>
-	  </Reference>
+    <Reference Include="DIHelper">
+			<HintPath>..\..\..\Build\di-helper\DIHelper\DIHelper.dll</HintPath>
+		</Reference>
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 using Config.Wrapper.Unity;
+using DiyBox.Core;
 using Serilog.Wrapper.Unity;
 using Unity;
 
@@ -23,7 +24,7 @@ public class UnityDependencySuite
 		RegisterSet<AppInput>();
 
 	protected override void RegisterConsoleOutput() => 
-		RegisterSet<AppOutput>();
+		RegisterSet<DescriptorSet>();
 
 	protected override void RegisterProgram() => 
 		RegisterSet<AppProgram<DiyBoxProgram>>();
