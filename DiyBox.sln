@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiyBox.Core", "DiyBox.Core\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiyBox.Tests", "DiyBox.Tests\DiyBox.Tests.csproj", "{2D901125-0BF3-44FF-8AC0-050B76B3C657}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiyBox.CommandDotNet", "DiyBox.CommandDotNet\DiyBox.CommandDotNet.csproj", "{60865279-6E4D-4EE2-AE08-07385C1E767D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2D901125-0BF3-44FF-8AC0-050B76B3C657}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D901125-0BF3-44FF-8AC0-050B76B3C657}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D901125-0BF3-44FF-8AC0-050B76B3C657}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60865279-6E4D-4EE2-AE08-07385C1E767D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60865279-6E4D-4EE2-AE08-07385C1E767D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60865279-6E4D-4EE2-AE08-07385C1E767D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60865279-6E4D-4EE2-AE08-07385C1E767D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
