@@ -58,6 +58,8 @@ public class DescriptorSet
 		IUnityContainer c
 		, IDictionary<Descriptors, IDescriptor> d)
     {
+		if(d.Count > 0) 
+			return d;
 		Add(c, d, Descriptors.HelpDescriptor);
 		Add(c, d, Descriptors.ObjectDimensions);
 		Add(c, d, Descriptors.StartCreator);

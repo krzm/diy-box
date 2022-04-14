@@ -4,13 +4,14 @@ using System.Collections.Generic;
 
 namespace DiyBox.Core;
 
-public class DiyBoxWizard : IDiyBoxWizard
+public class SheetWizard 
+    : IDiyBoxWizard
 {
     private readonly IArgsParser<Size3d> parser;
     private readonly IDictionary<Descriptors, IDescriptor> descriptors;
     private readonly ILogger logger;
 
-    public DiyBoxWizard(
+    public SheetWizard(
         IArgsParser<Size3d> parser
         , IDictionary<Descriptors, IDescriptor> descriptors
         , ILogger logger)
@@ -27,30 +28,9 @@ public class DiyBoxWizard : IDiyBoxWizard
             var objectSize = parser.Parse(args);
             var box = new Box(objectSize);
             var sheet = new Sheet(box);
-            var waste = new Waste(box, sheet);
-            var boxAndWaste = new BoxAndWaste(box, waste);
-            GetText(
-                Descriptors.ObjectDimensions
-                , objectSize);
-            GetText(Descriptors.StartCreator);
-            NextStep();
             GetText(
                 Descriptors.PrepareSheet
                 , sheet);
-            NextStep();
-            GetText(
-                Descriptors.MarkSheetHorizontally
-                , box);
-            NextStep();
-            GetText(
-                Descriptors.MarkSheetVerticallyFront
-                , boxAndWaste);
-            NextStep();
-            GetText(
-                Descriptors.MarkSheetVerticallySide
-                , boxAndWaste);
-            NextStep();
-            GetText(Descriptors.FoldBox);
         }
         catch (ArgumentException ex)
         {

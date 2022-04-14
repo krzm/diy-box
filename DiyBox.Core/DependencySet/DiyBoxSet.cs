@@ -15,6 +15,7 @@ public class DiyBoxSet
     {
         base.Register();
         Container.RegisterType<IArgsParser<Size3d>, DiyBoxParser>();
-        Container.RegisterType<IDiyBoxWizard, DiyBoxWizard>();
+        Container.RegisterType<IDiyBoxWizard, DiyBoxWizard>(nameof(DiyBoxWizard));
+        Container.RegisterType<IDiyBoxWizard, SheetWizard>(nameof(SheetWizard));
     }
 }
