@@ -13,28 +13,28 @@ public class Box
 		Front =
 			new BoxWall(
 				new Size2d(
-					size.Length
-					, size.Height)
+					size.X
+					, size.Z)
 				, new Size2d(
-					size.Length
-					, size.Width/2));
+					size.X
+					, size.Y/2));
 
 		Side =
 			new BoxWall(
 				new Size2d(
-					size.Width
-					, size.Height)
+					size.Y
+					, size.Z)
 				, new Size2d(
-					size.Width
-					, size.Width / 2));
+					size.Y
+					, size.Y / 2));
 
 		WallFlap = GetWallFlap();
 	}
 
 	private double GetWallFlap()
 	{
-		if (Front.Wall.Length <= 5) return Front.Wall.Length;
-		var flop = (int)(Front.Wall.Length / 4);
+		if (Front.Wall.X <= 5) return Front.Wall.X;
+		var flop = (int)(Front.Wall.X / 4);
 		return flop >= 5 ? (flop <= 10 ? flop : 10) : 5;
 	}
 }

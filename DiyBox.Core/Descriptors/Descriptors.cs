@@ -3,7 +3,7 @@
 public enum Descriptors 
 {
 	HelpDescriptor
-	, ObjectDimensions
+	, BoxDimension
 	, StartCreator
 	, NextStep
 	, PrepareSheet

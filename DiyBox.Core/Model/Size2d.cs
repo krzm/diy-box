@@ -6,24 +6,24 @@ public class Size2d
 {
 	protected const string ErrorMessage = "Positive number requaried.";
 
-	public double Length { get; protected set; }
+	public double X { get; protected set; }
 
-	public double Width { get; protected set; }
+	public double Y { get; protected set; }
 
 	public Size2d(
-		double length
-		, double width)
+		double x
+		, double y)
 	{
-		if (length <= 0) throw
+		if (x <= 0) throw
 			new ArgumentException(
 				ErrorMessage
-				, nameof(length));
-		if (width <= 0) throw 
+				, nameof(x));
+		if (y <= 0) throw 
 			new ArgumentException(
 				ErrorMessage
-				, nameof(width));
-		Length = length;
-		Width = width;
+				, nameof(y));
+		X = x;
+		Y = y;
 	}
 
 	public override bool Equals(object obj)
@@ -34,17 +34,17 @@ public class Size2d
 	public bool Equals(Size2d other)
 	{
 		return other != null &&
-			Length == other.Length &&
-			Width == other.Width;
+			X == other.X &&
+			Y == other.Y;
 	}
 
 	public override int GetHashCode()
 	{
-		return (Length, Width).GetHashCode();
+		return (X, Y).GetHashCode();
 	}
 
 	public override string ToString()
 	{
-		return $"Size2d({nameof(Length)}={Length}, {nameof(Width)}={Width})";
+		return $"Size2d({nameof(X)}={X}, {nameof(Y)}={Y})";
 	}
 }

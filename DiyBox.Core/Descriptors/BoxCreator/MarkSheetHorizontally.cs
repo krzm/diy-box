@@ -15,8 +15,8 @@ namespace DiyBox.Core
 			sb.AppendLine("with it's long dimmention from left to right.");
 			sb.AppendLine();
 			sb.AppendLine("First mark top from left to right, accros length of the sheet.");
-			sb.AppendLine($"Mark line on {box.Front.Wall.Length}.");
-			sb.AppendLine($"next on {box.Side.Wall.Length}.");
+			sb.AppendLine($"Mark line on {box.Front.Wall.X}.");
+			sb.AppendLine($"next on {box.Side.Wall.X}.");
 			sb.AppendLine();
 			sb.AppendLine($"Repeat those, once, to the end of the sheet.");
 			sb.AppendLine();

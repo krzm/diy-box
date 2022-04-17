@@ -30,7 +30,7 @@ public class DiyBoxWizard : IDiyBoxWizard
             var waste = new Waste(box, sheet);
             var boxAndWaste = new BoxAndWaste(box, waste);
             GetText(
-                Descriptors.ObjectDimensions
+                Descriptors.BoxDimension
                 , objectSize);
             GetText(Descriptors.StartCreator);
             NextStep();

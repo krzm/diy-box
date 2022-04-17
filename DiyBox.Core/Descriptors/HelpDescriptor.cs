@@ -1,51 +1,47 @@
 ﻿using System.Text;
 
-namespace DiyBox.Core
+namespace DiyBox.Core;
+
+public class HelpDescriptor 
+	: IDescriptor
 {
-	public class HelpDescriptor : IDescriptor
+	public string GetDescription(object data)
 	{
-		public string GetDescription(object data)
-		{
-			var message = (string)data;
-			var sb = new StringBuilder();
-			sb.AppendLine($"Error: {message}");
-			HandleMessagesOnErrors(message, sb);
-			return sb.ToString();
-		}
+		var message = (string)data;
+		var sb = new StringBuilder();
+		sb.AppendLine($"Error: {message}");
+		HandleMessagesOnErrors(message, sb);
+		return sb.ToString();
+	}
 
-		private void HandleMessagesOnErrors(string message, StringBuilder sb)
+	private void HandleMessagesOnErrors(string message, StringBuilder sb)
+	{
+		switch (message)
 		{
-			switch (message)
-			{
-				case string a when
-					a.Contains("Three args required."):
-					{
-						ProvideMessageForArgsNumberError(sb);
-						break;
-					};
-				case string b when
-					b.Contains("Wrong format of arg.") ||
-					b.Contains("Positive number requaried."):
-					{
-						ProvideMessageForArgsFromatError(sb);
-						break;
-					};
-			}
+			case string a when
+				a.Contains("Three args required"):
+				{
+					ProvideMessageForArgsNumberError(sb);
+					break;
+				};
+			case string b when
+				b.Contains("Wrong format of arg") ||
+				b.Contains("Positive number requaried"):
+				{
+					ProvideMessageForArgsFromatError(sb);
+					break;
+				};
 		}
+	}
 
-		private static void ProvideMessageForArgsNumberError(StringBuilder sb)
-		{
-			sb.AppendLine("Please provide three numbers as arguments.");
-			sb.AppendLine("Length, Height, Depth.");
-			sb.AppendLine("Assumption is that object is positioned so that front face");
-			sb.AppendLine("contains longest dimension length,");
-			sb.AppendLine("second longest is heigth.");
-			sb.Append("Depth is assumed to be shortest dimmension.");
-		}
+	private static void ProvideMessageForArgsNumberError(StringBuilder sb)
+	{
+		sb.AppendLine("Provide three numbers");
+		sb.AppendLine("X, Y - length and heigth of the box front; Z - box depth");
+	}
 
-		private static void ProvideMessageForArgsFromatError(StringBuilder sb)
-		{
-			sb.Append("Please provide number grater than zero.");
-		}
+	private static void ProvideMessageForArgsFromatError(StringBuilder sb)
+	{
+		sb.Append("Provide number grater than zero");
 	}
 }

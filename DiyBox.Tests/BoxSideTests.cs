@@ -14,7 +14,7 @@ public class BoxSideTests
 	{
 		var sut = new Box(new Size3d(Unit, width, Unit));
 
-		Assert.Equal(width, sut.Side.Wall.Length);
+		Assert.Equal(width, sut.Side.Wall.X);
 	}
 
 	[Theory]
@@ -24,7 +24,7 @@ public class BoxSideTests
 	{
 		var sut = new Box(new Size3d(Unit, Unit, heigth));
 
-		Assert.Equal(heigth, sut.Side.Wall.Width);
+		Assert.Equal(heigth, sut.Side.Wall.Y);
 	}
 
 	[Theory]
@@ -34,7 +34,7 @@ public class BoxSideTests
 	{
 		var sut = new Box(new Size3d(Unit, width, Unit));
 
-		Assert.Equal(width, sut.Side.Fold.Length);
+		Assert.Equal(width, sut.Side.Fold.X);
 	}
 
 	[Theory]
@@ -44,6 +44,6 @@ public class BoxSideTests
 	{
 		var sut = new Box(new Size3d(Unit, width, Unit));
 
-		Assert.Equal(width/2, sut.Side.Fold.Width);
+		Assert.Equal(width/2, sut.Side.Fold.Y);
 	}
 }

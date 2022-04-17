@@ -15,7 +15,7 @@ public class SheetTests
 	{
 		var sut = new Sheet(new Box(new Size3d(length, height, depth)));
 
-		Assert.Equal(sheetLength, sut.Size.Length);
+		Assert.Equal(sheetLength, sut.Size.X);
 	}
 
 	[Theory]
@@ -28,6 +28,6 @@ public class SheetTests
 	{
 		var sut = new Sheet(new Box(new Size3d(length, height, depth)));
 
-		Assert.Equal(sheetHeigth, sut.Size.Width);
+		Assert.Equal(sheetHeigth, sut.Size.Y);
 	}
 }

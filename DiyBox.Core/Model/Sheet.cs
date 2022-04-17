@@ -19,13 +19,13 @@ public class Sheet
 
 	private double GetSheetLength()
 	{
-		return (box.Front.Wall.Length + box.Side.Wall.Length) * 2 + box.WallFlap;
+		return (box.Front.Wall.X + box.Side.Wall.X) * 2 + box.WallFlap;
 	}
 
 	private double GetSheetHeight()
 	{
-		var frontHeight = box.Front.Wall.Width + 2 * box.Front.Fold.Width;
-		var sideHeight = box.Side.Wall.Width + 2 * box.Side.Fold.Width;
+		var frontHeight = box.Front.Wall.Y + 2 * box.Front.Fold.Y;
+		var sideHeight = box.Side.Wall.Y + 2 * box.Side.Fold.Y;
 		return Math.Max(frontHeight, sideHeight);
 	}
 }

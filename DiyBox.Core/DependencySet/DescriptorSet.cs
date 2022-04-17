@@ -23,8 +23,8 @@ public class DescriptorSet
     {
 		RegisterDescriptor<HelpDescriptor>(
 			Descriptors.HelpDescriptor);
-		RegisterDescriptor<ObjectDimensions>(
-			Descriptors.ObjectDimensions);
+		RegisterDescriptor<BoxDimension>(
+			Descriptors.BoxDimension);
 		RegisterDescriptor<StartCreator>(
 			Descriptors.StartCreator);
 		RegisterDescriptor<NextStep>(
@@ -61,7 +61,7 @@ public class DescriptorSet
 		if(d.Count > 0) 
 			return d;
 		Add(c, d, Descriptors.HelpDescriptor);
-		Add(c, d, Descriptors.ObjectDimensions);
+		Add(c, d, Descriptors.BoxDimension);
 		Add(c, d, Descriptors.StartCreator);
 		Add(c, d, Descriptors.NextStep);
 		Add(c, d, Descriptors.PrepareSheet);

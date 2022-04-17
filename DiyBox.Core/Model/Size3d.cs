@@ -4,18 +4,18 @@ namespace DiyBox.Core;
 
 public class Size3d : Size2d
 {
-	public double Height { get; private set; }
+	public double Z { get; private set; }
 
 	public Size3d(
-		double length
-		, double width
-		, double height) : base(length, width)
+		double x
+		, double y
+		, double z) : base(x, y)
 	{
-		if (height <= 0) throw 
+		if (z <= 0) throw 
 			new ArgumentException(
 				ErrorMessage
-				, nameof(height));
-		Height = height;
+				, nameof(z));
+		Z = z;
 	}
 
 	public override bool Equals(object obj)
@@ -27,16 +27,16 @@ public class Size3d : Size2d
 	{
 		return other != null &&
 			base.Equals(other) &&
-			Height == other.Height;
+			Z == other.Z;
 	}
 
 	public override int GetHashCode()
 	{
-		return (Length, Width, Height).GetHashCode();
+		return (X, Y, Z).GetHashCode();
 	}
 
 	public override string ToString()
 	{
-		return $"Size3d({nameof(Length)}={Length}, {nameof(Width)}={Width}, {nameof(Height)}={Height})";
+		return $"Size3d({nameof(X)}={X}, {nameof(Y)}={Y}, {nameof(Z)}={Z})";
 	}
 }
