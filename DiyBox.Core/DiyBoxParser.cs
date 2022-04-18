@@ -11,7 +11,7 @@ public class DiyBoxParser
 	{
 		if (args.Length != 3)
 			throw new ArgumentException(
-				"Three args required."
+				"Three args required"
 				, nameof(args));
 		return new Size3d(
 			ParseNumber(args[0], "Length")
@@ -29,7 +29,7 @@ public class DiyBoxParser
 		if (double.TryParse(arg, NumberStyles.Any, cultureInfo, out double result))
 			return result;
 		throw new ArgumentException(
-			"Wrong format of arg."
+			"Wrong format of arg"
 			, argName);
 	}
 }

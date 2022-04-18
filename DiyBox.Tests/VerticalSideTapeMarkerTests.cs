@@ -14,15 +14,20 @@ public class VerticalSideTapeMarkerTests
 		, double marker2
 		, double marker3)
 	{
-		var sut = new VerticalSideTapeMarker(
-			new Box(
+		var box = new Box();
+		var sut = new VerticalSideTapeMarker();
+
+		sut.Calculate(
+			box.Calculate(
 				new Size3d(
 					length
 					, heigth
-					, 0.1)));
-
-		Assert.Equal(marker1, sut.Mark("box.Side.Fold.Y1"));
-		Assert.Equal(marker2, sut.Mark("box.Side.Wall.Y"));
-		Assert.Equal(marker3, sut.Mark("box.Side.Fold.Y2"));
+					, 0.1)
+			)
+		);
+		
+		Assert.Equal(marker1, sut.GetMark("box.Side.Fold.Y1"));
+		Assert.Equal(marker2, sut.GetMark("box.Side.Wall.Y"));
+		Assert.Equal(marker3, sut.GetMark("box.Side.Fold.Y2"));
 	}
 }

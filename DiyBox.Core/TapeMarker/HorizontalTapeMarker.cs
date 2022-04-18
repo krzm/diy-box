@@ -5,13 +5,15 @@ namespace DiyBox.Core;
 public class HorizontalTapeMarker 
     : ITapeMarker
 {
-    private readonly Box box;
     private Dictionary<string, double> marks;
 
-    public HorizontalTapeMarker(Box box)
+    public HorizontalTapeMarker()
     {
-        this.box = box;
         marks = new Dictionary<string, double>();
+    }
+
+    public ITapeMarker Calculate(IBox box)
+    {
         marks.Add(
             "box.Front.Wall.X1"
             , box.Front.Wall.X);
@@ -31,9 +33,10 @@ public class HorizontalTapeMarker
             "box.WallFlap"
             , marks["box.Side.Wall.X2"] 
                 + box.WallFlap);
+        return this;
     }
 
-    public double Mark(string markName)
+    public double GetMark(string markName)
     {
         return marks[markName];
     }

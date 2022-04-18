@@ -13,7 +13,10 @@ public class SheetTests
 		, double depth
 		, double sheetLength)
 	{
-		var sut = new Sheet(new Box(new Size3d(length, height, depth)));
+		var box = new Box();
+		var sut = new Sheet();
+
+		sut.Calculate(box.Calculate(new Size3d(length, height, depth)));
 
 		Assert.Equal(sheetLength, sut.Size.X);
 	}
@@ -26,7 +29,10 @@ public class SheetTests
 		, double depth
 		, double sheetHeigth)
 	{
-		var sut = new Sheet(new Box(new Size3d(length, height, depth)));
+		var box = new Box();
+		var sut = new Sheet();
+
+		sut.Calculate(box.Calculate(new Size3d(length, height, depth)));
 
 		Assert.Equal(sheetHeigth, sut.Size.Y);
 	}

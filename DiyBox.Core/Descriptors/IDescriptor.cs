@@ -1,7 +1,6 @@
-﻿namespace DiyBox.Core
+﻿namespace DiyBox.Core;
+
+public interface IDescriptor
 {
-	public interface IDescriptor
-	{
-		public string GetDescription(object data = null);
-	}
+	public string GetDescription(object data = default);
 }

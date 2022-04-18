@@ -1,6 +1,7 @@
 namespace DiyBox.Core;
 
 public interface ITapeMarker
+    : ICalculator<IBox, ITapeMarker>
 {
-    double Mark(string markName);
+    double GetMark(string markName);
 }
