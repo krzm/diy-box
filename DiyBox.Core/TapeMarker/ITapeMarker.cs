@@ -1,6 +1,6 @@
 namespace DiyBox.Core;
 
-public interface IHorizontalTapeMarker
+public interface ITapeMarker
 {
     double Mark(string markName);
 }

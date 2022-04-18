@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace DiyBox.Core;
 
 public class HorizontalTapeMarker 
-    : IHorizontalTapeMarker
+    : ITapeMarker
 {
     private readonly Box box;
     private Dictionary<string, double> marks;
