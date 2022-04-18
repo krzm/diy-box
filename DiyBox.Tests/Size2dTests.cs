@@ -6,19 +6,22 @@ namespace DiyBox.Tests;
 
 public class Size2dTests
 {
+	const string x = nameof(Size2d.X);
+	const string y = nameof(Size2d.Y);
+
 	[Theory]
-	[InlineData(-1, 1, "length")]
-	[InlineData(1, -1, "width")]
-	[InlineData(0, 1, "length")]
-	[InlineData(1, 0, "width")]
-	[InlineData(-1.1, 1, "length")]
+	[InlineData(-1, 1, x)]
+	[InlineData(1, -1, y)]
+	[InlineData(0, 1, x)]
+	[InlineData(1, 0, y)]
+	[InlineData(-1.1, 1, x)]
 	public void Size2d_throws_on_negative_and_zero(
 		double length
 		, double height
 		, string param)
 	{
 		Assert.Throws<ArgumentException>(
-			param
+			param.ToLowerInvariant()
 			, () => new Size2d(length, height));
 	}
 
@@ -68,6 +71,6 @@ public class Size2dTests
 
 		var actual = sut.ToString();
 
-		Assert.Equal("Size2d(Length=20, Width=10)", actual);
+		Assert.Equal("Size2d(X=20, Y=10)", actual);
 	}
 }

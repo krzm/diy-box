@@ -6,9 +6,9 @@ public class Size2d
 {
 	protected const string ErrorMessage = "Positive number requaried.";
 
-	public double X { get; protected set; }
+	public double X { get; private set; }
 
-	public double Y { get; protected set; }
+	public double Y { get; private set; }
 
 	public Size2d(
 		double x

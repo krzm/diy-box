@@ -19,10 +19,10 @@ public class BoxFrontTests
 
 	[Theory]
 	[InlineData(10)]
-	public void Heigth_maps_to_box_front_wall_width(
+	public void Heigth_maps_to_box_front_wall_heigth(
 		double heigth)
 	{
-		var sut = new Box(new Size3d(Unit, Unit, heigth));
+		var sut = new Box(new Size3d(Unit, heigth, Unit));
 
 		Assert.Equal(heigth, sut.Front.Wall.Y);
 	}
@@ -39,7 +39,7 @@ public class BoxFrontTests
 
 	[Theory]
 	[InlineData(10)]
-	public void Width_maps_to_box_front_fold_width(
+	public void Width_maps_to_box_front_fold_heigth(
 		double width)
 	{
 		var sut = new Box(new Size3d(Unit, width, Unit));
