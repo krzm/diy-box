@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 namespace DiyBox.Core;
 
-public class DiyBoxWizard : IDiyBoxWizard
+public class DiyBoxWizard 
+    : IDiyBoxWizard
 {
     private readonly IArgsParser<Size3d> parser;
     private readonly IDictionary<Descriptors, IDescriptor> descriptors;
