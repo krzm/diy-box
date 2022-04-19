@@ -17,19 +17,21 @@ public class HorizontalTapeMarkerTests
 		, double marker5)
 	{
 		var box = new Box();
+		var bc = new BoxCalculator(
+			new SheetCalculator(null, box, null), null, null);
 		var sut = new HorizontalTapeMarker();
 
-		sut.Calculate(
-			box.Calculate(
-				new Size3d(
-					length
-					, 0.1
-					, depth)));
+		box.Calculate(
+			new Size3d(
+				length
+				, 0.1
+				, depth));
+		sut.Calculate(bc);
 		
-		Assert.Equal(marker1, sut.GetMark("box.Front.Wall.X1"));
-		Assert.Equal(marker2, sut.GetMark("box.Side.Wall.X1"));
-		Assert.Equal(marker3, sut.GetMark("box.Front.Wall.X2"));
-		Assert.Equal(marker4, sut.GetMark("box.Side.Wall.X2"));
-		Assert.Equal(marker5, sut.GetMark("box.WallFlap"));
+		Assert.Equal(marker1, sut.GetMark("Front1"));
+		Assert.Equal(marker2, sut.GetMark("Side1"));
+		Assert.Equal(marker3, sut.GetMark("Front2"));
+		Assert.Equal(marker4, sut.GetMark("Side2"));
+		Assert.Equal(marker5, sut.GetMark("WallFlap"));
 	}
 }

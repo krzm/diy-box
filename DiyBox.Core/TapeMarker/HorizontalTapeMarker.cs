@@ -12,8 +12,9 @@ public class HorizontalTapeMarker
         marks = new Dictionary<string, double>();
     }
 
-    public ITapeMarker Calculate(IBox box)
+    public ITapeMarker Calculate(IBoxCalculator bc)
     {
+        var box = bc.SheetCalculator.Box;
         marks.Add(
             "box.Front.Wall.X1"
             , box.Front.Wall.X);

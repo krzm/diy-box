@@ -42,13 +42,13 @@ public class BoxCalculator
         Waste = waste.Calculate(SheetCalculator);
         HorizontalTapeMarker = 
             horizontalTapeMarker.Calculate(
-                SheetCalculator.Box);
+                this);
         VerticalFrontTapeMarker = 
             verticalFrontTapeMarker.Calculate(
-                SheetCalculator.Box);
+                this);
         VerticalSideTapeMarker = 
             verticalSideTapeMarker.Calculate(
-                SheetCalculator.Box);
+                this);
         return this;
     }
 }

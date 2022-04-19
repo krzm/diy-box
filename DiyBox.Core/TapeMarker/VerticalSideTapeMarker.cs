@@ -12,8 +12,9 @@ public class VerticalSideTapeMarker
         marks = new Dictionary<string, double>();
     }
 
-    public ITapeMarker Calculate(IBox box)
+    public ITapeMarker Calculate(IBoxCalculator bc)
     {
+        var box = bc.SheetCalculator.Box;
         marks.Add(
             "box.Side.Fold.Y1"
             , box.Side.Fold.Y);
