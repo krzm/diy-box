@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DIHelper.Unity;
 using Unity;
 using Unity.Injection;
@@ -33,7 +34,7 @@ public class DiyBoxSet
                 new InjectionConstructor(
                     Container.Resolve<ISheetCalculator>()
                     , Container.Resolve<IWaste>()
-                    , Container.Resolve<ITapeMarker>(nameof(HorizontalTapeMarker))
+                    , Container.Resolve<List<ITapeMarker>>()
                 )
             )
             

@@ -29,10 +29,14 @@ public class MarkSheetHorizontally
 		sb.AppendLine($"Mark line on {box.Front.Wall.X}");
 		sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.Front.Wall.X1")})");
 		sb.AppendLine($"next on {box.Side.Wall.X}.");
+		sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.Side.Wall.X1")})");
 		sb.AppendLine();
 		sb.AppendLine($"Repeat those, once, to the end of the sheet");
+		sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.Front.Wall.X2")})");
+		sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.Side.Wall.X2")})");
 		sb.AppendLine();
 		sb.AppendLine($"Mark flap of length {box.WallFlap} at the end");
+		sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.WallFlap")})");
 		sb.AppendLine();
 		sb.AppendLine("Add same markers at the bottom of the sheet");
 		sb.AppendLine();

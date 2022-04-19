@@ -5,6 +5,15 @@ namespace DiyBox.Core;
 public class MarkSheetVerticallySide 
 	: IDescriptor
 {
+    private readonly ITapeMarker tapeMarker;
+
+    public MarkSheetVerticallySide(
+		ITapeMarker tapeMarker
+	)
+	{
+        this.tapeMarker = tapeMarker;
+    }
+	
 	public string GetDescription(object data)
 	{
 		var bc = (IBoxCalculator)data;
@@ -25,8 +34,11 @@ public class MarkSheetVerticallySide
 		else
 		{
 			sb.AppendLine($"From top going dowan, mark line on {sc.Box.Side.Fold.Y}");
+			sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.Side.Fold.Y1")})");
 			sb.AppendLine($"Next mark at {sc.Box.Side.Wall.Y} down");
+			sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.Side.Wall.Y")})");
 			sb.AppendLine($"Check if remaining length is {sc.Box.Side.Fold.Y}");
+			sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.Side.Fold.Y2")})");
 		}
 		sb.AppendLine();
 		sb.AppendLine("Repeat step 3 and 4 on two remaining vertical lines");
