@@ -37,7 +37,7 @@ public class DiyBoxWizard
         NextStep();
         GetText(
             Descriptors.MarkSheetHorizontally
-            , sc.Box);
+            , bc);
         NextStep();
         GetText(
             Descriptors.MarkSheetVerticallyFront
