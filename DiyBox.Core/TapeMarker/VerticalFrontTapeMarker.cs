@@ -3,7 +3,8 @@ namespace DiyBox.Core;
 public class VerticalFrontTapeMarker 
     : TapeMarker
 {
-    public override ITapeMarker Calculate(IBoxCalculator bc)
+    protected override ITapeMarker CalcMarks(
+        IBoxCalculator bc)
     {
         var box = bc.SheetCalculator.Box;
         var waste = bc.Waste;

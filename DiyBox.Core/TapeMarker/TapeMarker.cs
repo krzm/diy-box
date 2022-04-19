@@ -5,14 +5,22 @@ namespace DiyBox.Core;
 public abstract class TapeMarker
     : ITapeMarker
 {
-    private Dictionary<string, double> marks;
+    private readonly Dictionary<string, double> marks;
 
     protected TapeMarker()
     {
         marks = new Dictionary<string, double>();
     }
 
-    public abstract ITapeMarker Calculate(IBoxCalculator input);
+    public ITapeMarker Calculate(
+        IBoxCalculator bc)
+    {
+        marks.Clear();
+        return CalcMarks(bc);
+    }
+
+    protected abstract ITapeMarker CalcMarks(
+        IBoxCalculator bc);
 
     public double GetMark(string markName)
     {

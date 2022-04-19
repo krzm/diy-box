@@ -3,11 +3,12 @@ namespace DiyBox.Core;
 public class VerticalSideTapeMarker 
     : TapeMarker
 {
-    public override ITapeMarker Calculate(IBoxCalculator bc)
+    protected override ITapeMarker CalcMarks(
+        IBoxCalculator bc)
     {
         var box = bc.SheetCalculator.Box;
         var waste = bc.Waste;
-        if(bc.Waste.IsFrontWaste == false)
+        if(bc.Waste.IsSideWaste == false)
         {
             Mark(box, waste);
         }

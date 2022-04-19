@@ -5,12 +5,17 @@ namespace DiyBox.Core;
 public abstract class Descriptor<TData>
     : IDescriptor
 {
-	private StringBuilder sb;
+	private readonly StringBuilder sb;
+
+	public Descriptor()
+	{
+		sb = new StringBuilder();
+	}
 
     public string GetDescription(object data = null)
 	{
 		var dataType = (TData)data;
-		sb = new StringBuilder();
+		sb.Clear();
 		DefineDescription(dataType);
 		return sb.ToString();		
 	}
