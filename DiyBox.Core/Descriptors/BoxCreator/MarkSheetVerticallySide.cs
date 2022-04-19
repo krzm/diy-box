@@ -1,49 +1,66 @@
-﻿using System.Text;
-
-namespace DiyBox.Core;
+﻿namespace DiyBox.Core;
 
 public class MarkSheetVerticallySide 
-	: IDescriptor
+	: MarkerDescriptor<IBoxCalculator>
 {
-    private readonly ITapeMarker tapeMarker;
-
     public MarkSheetVerticallySide(
 		ITapeMarker tapeMarker
-	)
+	) : base(tapeMarker)
 	{
-        this.tapeMarker = tapeMarker;
     }
 	
-	public string GetDescription(object data)
-	{
-		var bc = (IBoxCalculator)data;
-		var sc = bc.SheetCalculator;
-		var sb = new StringBuilder();
-		sb.AppendLine("Step 4");
-		sb.AppendLine("Move to next vertical line on the right");
-		if (bc.Waste.IsFrontWaste == false)
-		{
-			sb.AppendLine($"From top going down, mark line on {bc.Waste.WasteHeight}");
-			sb.AppendLine("Mark it with X as a waste");
-			sb.AppendLine($"Next mark at {sc.Box.Side.Fold.Y} down");
-			sb.AppendLine($"Next mark at {sc.Box.Side.Wall.Y} down");
-			sb.AppendLine($"Check if remaining length is {sc.Box.Side.Fold.Y}");
-			sb.AppendLine($"Check down again, if remaining length is {bc.Waste.WasteHeight}");
-			sb.AppendLine("Mark it with X as a waste");
-		}
-		else
-		{
-			sb.AppendLine($"From top going dowan, mark line on {sc.Box.Side.Fold.Y}");
-			sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.Side.Fold.Y1")})");
-			sb.AppendLine($"Next mark at {sc.Box.Side.Wall.Y} down");
-			sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.Side.Wall.Y")})");
-			sb.AppendLine($"Check if remaining length is {sc.Box.Side.Fold.Y}");
-			sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.Side.Fold.Y2")})");
-		}
-		sb.AppendLine();
-		sb.AppendLine("Repeat step 3 and 4 on two remaining vertical lines");
-		sb.AppendLine();
-		sb.AppendLine("Connect horizontally, markers you just did on vertical lines");
-		return sb.ToString();
-	}
+    protected override void DefineDescription(
+		IBoxCalculator bc)
+    {
+		var box = bc.SheetCalculator.Box;
+		var waste = bc.Waste;
+		Add("Step 4");
+		Add("Move to next vertical line on the right (side wall)");
+		if(waste.IsSideWaste == false)
+        {
+            SetDescription(box);
+        }
+        else
+        {
+			SetDescriptionWithWaste(box, waste);
+        }
+		Add("Repeat step 3 and 4 on two remaining vertical lines");
+		Add("Connect horizontally, markers you just did on vertical lines");
+    }
+
+    private void SetDescription(IBox box)
+    {
+		Add("From top going dowan, mark line on {0}"
+			, box.Side.Fold.Y
+			, "Fold1");
+		Add("Next mark at {0} down"
+			, box.Side.Wall.Y
+			, "Wall");
+		Add("Check if remaining length is {0}"
+			, box.Side.Fold.Y
+			, "Fold2");
+    }
+
+	private void SetDescriptionWithWaste(
+		IBox box
+		, IWaste waste)
+    {
+		Add("From top going down, mark line on {0}"
+			, waste.WasteHeight
+			, "Waste1");
+		Add("Mark it with X as a waste");
+		Add("Next mark at {0} down"
+			, box.Side.Fold.Y
+			, "Fold1");
+		Add("Next mark at {0} down"
+			, box.Side.Wall.Y
+			, "Wall");
+		Add("Check if remaining length is {0}"
+			, box.Side.Fold.Y
+			, "Fold2");
+		Add("Check down again, if remaining length is {0}"
+			, waste.WasteHeight
+			, "Waste2");
+		Add("Mark it with X as a waste");
+    }
 }

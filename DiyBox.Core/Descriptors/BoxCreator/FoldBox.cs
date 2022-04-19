@@ -1,25 +1,17 @@
-﻿using System.Text;
-
-namespace DiyBox.Core;
+﻿namespace DiyBox.Core;
 
 public class FoldBox 
-	: IDescriptor
+	: Descriptor<object>
 {
-	public string GetDescription(object data)
-	{
-		var sb = new StringBuilder();
-		sb.AppendLine("Step 5");
-		sb.AppendLine("Folding box");
-		sb.AppendLine("Cut out waste marked with X id any");
-		sb.AppendLine("Cut folds according to drawed lines");
-		sb.AppendLine();
-		sb.AppendLine("Glue up the box using wall flap at the end");
-		sb.AppendLine();
-		sb.AppendLine("Glue up the box bottom");
-		sb.AppendLine();
-		sb.AppendLine("Insert object and glue up box top");
-		sb.AppendLine();
-		sb.AppendLine("Congratulations ! You can send a package");
-		return sb.ToString();
-	}
+    protected override void DefineDescription(object data)
+    {
+        Add("Step 5");
+		Add("Folding box");
+		Add("Cut out waste marked with X id any");
+		Add("Cut folds according to drawed lines");
+		Add("Glue up the box using wall flap at the end");
+		Add("Glue up the box bottom");
+		Add("Insert object and glue up box top");
+		Add("Congratulations ! You can send a package");
+    }
 }

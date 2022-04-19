@@ -1,36 +1,60 @@
-using System.Collections.Generic;
-
 namespace DiyBox.Core;
 
 public class VerticalSideTapeMarker 
-    : ITapeMarker
+    : TapeMarker
 {
-    private Dictionary<string, double> marks;
-
-    public VerticalSideTapeMarker()
-    {
-        marks = new Dictionary<string, double>();
-    }
-
-    public ITapeMarker Calculate(IBoxCalculator bc)
+    public override ITapeMarker Calculate(IBoxCalculator bc)
     {
         var box = bc.SheetCalculator.Box;
-        marks.Add(
-            "box.Side.Fold.Y1"
-            , box.Side.Fold.Y);
-        marks.Add(
-            "box.Side.Wall.Y"
-            , marks["box.Side.Fold.Y1"] 
-                + box.Side.Wall.Y);
-        marks.Add(
-            "box.Side.Fold.Y2"
-            , marks["box.Side.Wall.Y"] 
-                + box.Side.Fold.Y);
+        var waste = bc.Waste;
+        if(bc.Waste.IsFrontWaste == false)
+        {
+            Mark(box, waste);
+        }
+        else
+        {
+            MarkWithWaste(box, waste);
+        }
         return this;
     }
 
-    public double GetMark(string markName)
+    private void Mark(
+        IBox box
+        , IWaste waste)
     {
-        return marks[markName];
+        Add("Fold1"
+            , box.Side.Fold.Y);
+        Add(
+            "Wall"
+            , "Fold1"
+            , box.Side.Wall.Y);
+        Add(
+            "Fold2"
+            , "Wall"
+            , box.Side.Fold.Y);
+    }
+
+    private void MarkWithWaste(
+        IBox box
+        , IWaste waste)
+    {
+        Add("Waste1"
+            , waste.WasteHeight);
+        Add(
+            "Fold1"
+            , "Waste1"
+            , box.Side.Fold.Y);
+        Add(
+            "Wall"
+            , "Fold1"
+            , box.Side.Wall.Y);
+        Add(
+            "Fold2"
+            , "Wall"
+            , box.Side.Fold.Y);
+        Add(
+            "Waste2"
+            , "Fold2"
+            , waste.WasteHeight);
     }
 }

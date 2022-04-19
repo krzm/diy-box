@@ -1,17 +1,13 @@
-﻿using System.Text;
-
-namespace DiyBox.Core;
+﻿namespace DiyBox.Core;
 
 public class PrepareSheet 
-	: IDescriptor
+	: Descriptor<Sheet>
 {
-	public string GetDescription(object data)
-	{
-		var sheet = (Sheet)data;
-		var sb = new StringBuilder();
-		sb.AppendLine($"Step 1");
-		sb.AppendLine($"Prepare cardboard sheet");
-		sb.AppendLine($"of length {sheet.Size.X} and heigth {sheet.Size.Y}");
-		return sb.ToString();
-	}
+    protected override void DefineDescription(
+		Sheet sheet)
+    {
+		Add("Step 1");
+		Add("Prepare cardboard sheet");
+		Add($"of length {sheet.Size.X} and heigth {sheet.Size.Y}");
+    }
 }

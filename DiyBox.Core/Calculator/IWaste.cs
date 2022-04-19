@@ -5,4 +5,5 @@ public interface IWaste
 {
     double WasteHeight { get; }
     bool IsFrontWaste { get; }
+    bool IsSideWaste { get; }
 }

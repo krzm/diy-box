@@ -1,14 +1,10 @@
-﻿using System.Text;
-
-namespace DiyBox.Core;
+﻿namespace DiyBox.Core;
 
 public class StartCreator 
-	: IDescriptor
+	: Descriptor<object>
 {
-	public string GetDescription(object data)
-	{
-		var sb = new StringBuilder();
-		sb.AppendLine($"Step by Step Box Creator");
-		return sb.ToString();
-	}
+    protected override void DefineDescription(object data)
+    {
+		Add("Step by Step Box Creator");
+    }
 }

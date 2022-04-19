@@ -1,14 +1,10 @@
-﻿using System.Text;
-
-namespace DiyBox.Core;
+﻿namespace DiyBox.Core;
 
 public class NextStep 
-	: IDescriptor
+	: Descriptor<object>
 {
-	public string GetDescription(object data)
-	{
-		var sb = new StringBuilder();
-		sb.AppendLine($"Push Enter for next step");
-		return sb.ToString();
-	}
+    protected override void DefineDescription(object data)
+    {
+        Add("Push Enter for next step");
+    }
 }
