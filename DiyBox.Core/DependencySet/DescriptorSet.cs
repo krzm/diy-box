@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using DIHelper.Unity;
 using Unity;
+using Unity.Injection;
+using Unity.Lifetime;
 
 namespace DiyBox.Core;
 
@@ -32,7 +34,10 @@ public class DescriptorSet
 		RegisterDescriptor<PrepareSheet>(
 			Descriptors.PrepareSheet);
 		RegisterDescriptor<MarkSheetHorizontally>(
-			Descriptors.MarkSheetHorizontally);
+			Descriptors.MarkSheetHorizontally
+			, new InjectionConstructor(
+				Container.Resolve<ITapeMarker>(nameof(HorizontalTapeMarker))
+			));
 		RegisterDescriptor<MarkSheetVerticallyFront>(
 			Descriptors.MarkSheetVerticallyFront);
 		RegisterDescriptor<MarkSheetVerticallySide>(
@@ -41,10 +46,22 @@ public class DescriptorSet
 			Descriptors.FoldBox);
     }
 
-	private void RegisterDescriptor<TDescriptor>(Descriptors descriptor)
+	private void RegisterDescriptor<TDescriptor>(
+		Descriptors descriptor)
 		where TDescriptor : IDescriptor
 	{
-		Container.RegisterType<IDescriptor, TDescriptor>(descriptor.ToString());
+		Container.RegisterSingleton<IDescriptor, TDescriptor>(
+			descriptor.ToString());
+	}
+	
+	private void RegisterDescriptor<TDescriptor>(
+		Descriptors descriptor
+		, InjectionConstructor injectionConstructor)
+		where TDescriptor : IDescriptor
+	{
+		Container.RegisterSingleton<IDescriptor, TDescriptor>(
+			descriptor.ToString()
+			, injectionConstructor);
 	}
 
     private void RegisterDescriptorDictionary()

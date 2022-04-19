@@ -5,6 +5,15 @@ namespace DiyBox.Core;
 public class MarkSheetHorizontally 
 	: IDescriptor
 {
+    private readonly ITapeMarker tapeMarker;
+
+    public MarkSheetHorizontally(
+		ITapeMarker tapeMarker
+	)
+	{
+        this.tapeMarker = tapeMarker;
+    }
+
 	public string GetDescription(object data)
 	{
 		var box = (Box)data;
@@ -18,6 +27,7 @@ public class MarkSheetHorizontally
 		sb.AppendLine();
 		sb.AppendLine("Mark top, from left to right, accros length of the sheet");
 		sb.AppendLine($"Mark line on {box.Front.Wall.X}");
+		sb.AppendLine($"(Measuring tape {tapeMarker.GetMark("box.Front.Wall.X1")})");
 		sb.AppendLine($"next on {box.Side.Wall.X}.");
 		sb.AppendLine();
 		sb.AppendLine($"Repeat those, once, to the end of the sheet");

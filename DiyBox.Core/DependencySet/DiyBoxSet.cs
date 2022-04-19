@@ -1,9 +1,11 @@
+using DIHelper.Unity;
 using Unity;
+using Unity.Injection;
 
 namespace DiyBox.Core;
 
 public class DiyBoxSet 
-    : DescriptorSet
+    : UnityDependencySet
 {
     public DiyBoxSet(
         IUnityContainer container) 
@@ -13,17 +15,31 @@ public class DiyBoxSet
 
     public override void Register()
     {
-        base.Register();
         Container
-            .RegisterType<IArgsParser<Size3d>, DiyBoxParser>()
-            .RegisterType<IBox, Box>()
-            .RegisterType<ISheet, Sheet>()
-            .RegisterType<ISheetCalculator, SheetCalculator>()
-            .RegisterType<IWaste, Waste>()
-            .RegisterType<IBoxCalculator, BoxCalculator>()
-            .RegisterType<IDiyBoxWizard, SheetWizard>(
+            .RegisterSingleton<IArgsParser<Size3d>, DiyBoxParser>()
+            .RegisterSingleton<IBox, Box>()
+            .RegisterSingleton<ISheet, Sheet>()
+            .RegisterSingleton<ISheetCalculator, SheetCalculator>()
+            .RegisterSingleton<IWaste, Waste>()
+            
+            .RegisterSingleton<ITapeMarker, HorizontalTapeMarker>(
+                nameof(HorizontalTapeMarker))
+            .RegisterSingleton<ITapeMarker, VerticalFrontTapeMarker>(
+                nameof(VerticalFrontTapeMarker))
+            .RegisterSingleton<ITapeMarker, VerticalSideTapeMarker>(
+                nameof(VerticalSideTapeMarker))
+            
+            .RegisterSingleton<IBoxCalculator, BoxCalculator>(
+                new InjectionConstructor(
+                    Container.Resolve<ISheetCalculator>()
+                    , Container.Resolve<IWaste>()
+                    , Container.Resolve<ITapeMarker>(nameof(HorizontalTapeMarker))
+                )
+            )
+            
+            .RegisterSingleton<IDiyBoxWizard, SheetWizard>(
                 nameof(SheetWizard))
-            .RegisterType<IDiyBoxWizard, DiyBoxWizard>(
+            .RegisterSingleton<IDiyBoxWizard, DiyBoxWizard>(
                 nameof(DiyBoxWizard));
     }
 }
