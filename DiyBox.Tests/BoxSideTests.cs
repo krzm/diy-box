@@ -13,8 +13,9 @@ public class BoxSideTests
 		double heigth)
 	{
 		var sut = new Box();
+		var size = new Size3d(Unit, heigth, Unit);
 
-		sut.Calculate(new Size3d(Unit, heigth, Unit));
+		sut.Calculate(size);
 
 		Assert.Equal(heigth, sut.Side.Wall.Y);
 	}
@@ -25,8 +26,9 @@ public class BoxSideTests
 		double depth)
 	{
 		var sut = new Box();
+		var size = new Size3d(Unit, Unit, depth);
 
-		sut.Calculate(new Size3d(Unit, Unit, depth));
+		sut.Calculate(size);
 
 		Assert.Equal(depth, sut.Side.Wall.X);
 	}
@@ -37,8 +39,9 @@ public class BoxSideTests
 		double depth)
 	{
 		var sut = new Box();
+		var size = new Size3d(Unit, Unit, depth);
 
-		sut.Calculate(new Size3d(Unit, Unit, depth));
+		sut.Calculate(size);
 
 		Assert.Equal(depth, sut.Side.Fold.X);
 	}
@@ -49,8 +52,9 @@ public class BoxSideTests
 		double length)
 	{
 		var sut = new Box();
+		var size = new Size3d(length, Unit, Unit);
 
-		sut.Calculate(new Size3d(length, Unit, Unit));
+		sut.Calculate(size);
 
 		Assert.Equal(length/2, sut.Side.Fold.Y);
 	}

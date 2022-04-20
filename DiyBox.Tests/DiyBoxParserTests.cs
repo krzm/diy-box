@@ -22,7 +22,16 @@ public class DiyBoxParserTests
 	{
 		var sut = new DiyBoxParser();
 
-		Assert.Throws<ArgumentException>("args", () => sut.Parse(args));
+		var ex = Assert.Throws<ArgumentException>(
+			"args"
+			, () => sut.Parse(args));
+		Assert.Equal(
+			string.Join(
+				" "
+				, "Three args required"
+				, "(Parameter 'args')"
+			)
+			, ex.Message);
 	}
 
 	[Theory]
@@ -41,7 +50,16 @@ public class DiyBoxParserTests
 	{
 		var sut = new DiyBoxParser();
 
-		Assert.Throws<ArgumentException>(argName, () => sut.Parse(args));
+		var ex = Assert.Throws<ArgumentException>(
+			argName
+			, () => sut.Parse(args));
+		Assert.Equal(
+			string.Join(
+				" "
+				, "Wrong format of arg"
+				, $"(Parameter '{argName}')"
+			)
+			, ex.Message);
 	}
 
 	[Theory]
@@ -62,9 +80,10 @@ public class DiyBoxParserTests
 		, double depth)
 	{
 		var sut = new DiyBoxParser();
+		var size = new Size3d(length, height, depth);
 
 		var acctual = sut.Parse(args);
 
-		Assert.Equal(new Size3d(length, height, depth), acctual);
+		Assert.Equal(size, acctual);
 	}
 }

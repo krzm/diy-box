@@ -11,22 +11,29 @@ public class BoxFrontTests
 	[InlineData(10)]
 	public void Length_maps_to_box_front_wall_length(
 		double length)
-	{
-		var sut = new Box();
+    {
+        var sut = GetSut();
+        var size = new Size3d(length, Unit, Unit);
 
-		sut.Calculate(new Size3d(length, Unit, Unit));
+        sut.Calculate(size);
 
-		Assert.Equal(length, sut.Front.Wall.X);
-	}
+        Assert.Equal(length, sut.Front.Wall.X);
+    }
 
-	[Theory]
+	private Box GetSut()
+    {
+    	return new Box();
+    }
+
+    [Theory]
 	[InlineData(10)]
 	public void Heigth_maps_to_box_front_wall_heigth(
 		double heigth)
 	{
-		var sut = new Box();
+		var sut = GetSut();
+		var size = new Size3d(Unit, heigth, Unit);
 
-		sut.Calculate(new Size3d(Unit, heigth, Unit));
+		sut.Calculate(size);
 
 		Assert.Equal(heigth, sut.Front.Wall.Y);
 	}
@@ -36,22 +43,24 @@ public class BoxFrontTests
 	public void Length_maps_to_box_front_fold_length(
 		double length)
 	{
-		var sut = new Box();
+		var sut = GetSut();
+		var size = new Size3d(length, Unit, Unit);
 
-		sut.Calculate(new Size3d(length, Unit, Unit));
+		sut.Calculate(size);
 
 		Assert.Equal(length, sut.Front.Fold.X);
 	}
 
 	[Theory]
 	[InlineData(10)]
-	public void Width_maps_to_box_front_fold_heigth(
-		double width)
+	public void Heigth_maps_to_box_front_fold_heigth(
+		double heigth)
 	{
-		var sut = new Box();
+		var sut = GetSut();
+		var size = new Size3d(Unit, heigth, Unit);
 
-		sut.Calculate(new Size3d(Unit, width, Unit));
+		sut.Calculate(size);
 
-		Assert.Equal(width / 2, sut.Front.Fold.Y);
+		Assert.Equal(heigth / 2, sut.Front.Fold.Y);
 	}
 }
