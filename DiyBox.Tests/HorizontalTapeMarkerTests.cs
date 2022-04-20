@@ -1,4 +1,5 @@
 using DiyBox.Core;
+using Moq;
 using Xunit;
 
 namespace DiyBox.Tests;
@@ -16,17 +17,17 @@ public class HorizontalTapeMarkerTests
 		, double marker4
 		, double marker5)
 	{
-		var box = new Box();
-		var bc = new BoxCalculator(
-			new SheetCalculator(null, box, null), null, null);
+		var mock = new Mock<IBox>();
+		var frontWall = new Size2d(length, 0.1);
+		var front = new BoxWall(frontWall, null);
+		mock.Setup(b => b.Front).Returns(front);
+		var sideWall = new Size2d(depth, 0.1);
+		var side = new BoxWall(sideWall, null);
+		mock.Setup(b => b.Side).Returns(side);
+		mock.Setup(b => b.WallFlap).Returns(5);
 		var sut = new HorizontalTapeMarker();
-
-		box.Calculate(
-			new Size3d(
-				length
-				, 0.1
-				, depth));
-		sut.Calculate(bc);
+		
+		sut.Calculate(mock.Object);
 		
 		Assert.Equal(marker1, sut.GetMark("Front1"));
 		Assert.Equal(marker2, sut.GetMark("Side1"));
