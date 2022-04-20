@@ -4,9 +4,9 @@ public class HorizontalTapeMarker
     : TapeMarker
 {
     protected override ITapeMarker CalcMarks(
-        IBoxCalculator bc)
+        object data)
     {
-        var box = bc.SheetCalculator.Box;
+        var box = (IBox)data;
         Add(
             "Front1"
             , box.Front.Wall.X);

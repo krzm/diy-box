@@ -28,11 +28,11 @@ public class BoxCalculator
         this.sheetCalculator = sheetCalculator;
         this.waste = waste;
         this.tapeMarkers = tapeMarkers;
-        horizontalTapeMarker = tapeMarkers
+        horizontalTapeMarker = this.tapeMarkers
             .FirstOrDefault(m => m is HorizontalTapeMarker);
-        verticalFrontTapeMarker = tapeMarkers
+        verticalFrontTapeMarker = this.tapeMarkers
             .FirstOrDefault(m => m is VerticalFrontTapeMarker);
-        verticalSideTapeMarker = tapeMarkers
+        verticalSideTapeMarker = this.tapeMarkers
             .FirstOrDefault(m => m is VerticalSideTapeMarker);
     }
 
@@ -42,7 +42,7 @@ public class BoxCalculator
         Waste = waste.Calculate(SheetCalculator);
         HorizontalTapeMarker = 
             horizontalTapeMarker.Calculate(
-                this);
+                SheetCalculator.Box);
         VerticalFrontTapeMarker = 
             verticalFrontTapeMarker.Calculate(
                 this);

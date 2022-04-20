@@ -4,8 +4,9 @@ public class VerticalFrontTapeMarker
     : TapeMarker
 {
     protected override ITapeMarker CalcMarks(
-        IBoxCalculator bc)
+        object data)
     {
+        var bc = (IBoxCalculator)data;
         var box = bc.SheetCalculator.Box;
         var waste = bc.Waste;
         if(bc.Waste.IsFrontWaste == false)

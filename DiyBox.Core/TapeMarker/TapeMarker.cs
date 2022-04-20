@@ -13,14 +13,14 @@ public abstract class TapeMarker
     }
 
     public ITapeMarker Calculate(
-        IBoxCalculator bc)
+        object data)
     {
         marks.Clear();
-        return CalcMarks(bc);
+        return CalcMarks(data);
     }
 
     protected abstract ITapeMarker CalcMarks(
-        IBoxCalculator bc);
+        object data);
 
     public double GetMark(string markName)
     {
