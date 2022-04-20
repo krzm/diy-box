@@ -17,8 +17,8 @@ public class BoxWallFlapTests
 		double length
 		, int flop)
 	{
-		var sut = new Box();
 		var size = new Size3d(length, Unit, Unit);
+		var sut = new Box();
 
 		sut.Calculate(size);
 

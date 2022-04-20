@@ -79,8 +79,8 @@ public class DiyBoxParserTests
 		, double height
 		, double depth)
 	{
-		var sut = new DiyBoxParser();
 		var size = new Size3d(length, height, depth);
+		var sut = new DiyBoxParser();
 
 		var acctual = sut.Parse(args);
 

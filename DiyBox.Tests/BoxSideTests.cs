@@ -12,8 +12,8 @@ public class BoxSideTests
 	public void Heigth_maps_to_box_side_wall_heigth(
 		double heigth)
 	{
-		var sut = new Box();
 		var size = new Size3d(Unit, heigth, Unit);
+		var sut = new Box();
 
 		sut.Calculate(size);
 
@@ -25,8 +25,8 @@ public class BoxSideTests
 	public void Depth_maps_to_box_side_wall_length(
 		double depth)
 	{
-		var sut = new Box();
 		var size = new Size3d(Unit, Unit, depth);
+		var sut = new Box();
 
 		sut.Calculate(size);
 
@@ -38,8 +38,8 @@ public class BoxSideTests
 	public void Depth_maps_to_box_side_fold_length(
 		double depth)
 	{
-		var sut = new Box();
 		var size = new Size3d(Unit, Unit, depth);
+		var sut = new Box();
 
 		sut.Calculate(size);
 
@@ -51,8 +51,8 @@ public class BoxSideTests
 	public void Length_maps_to_box_side_fold_heigth(
 		double length)
 	{
-		var sut = new Box();
 		var size = new Size3d(length, Unit, Unit);
+		var sut = new Box();
 
 		sut.Calculate(size);
 
