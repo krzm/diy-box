@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using CLIHelper;
+using Serilog;
 using System.Collections.Generic;
 
 namespace DiyBox.Core;
@@ -11,8 +12,9 @@ public class DiyBoxWizard
     public DiyBoxWizard(
         IBoxCalculator boxCalculator
         , IDictionary<Descriptors, IDescriptor> descriptor
+        , IInput input
         , ILogger logger) 
-        : base(descriptor, logger)
+        : base(descriptor, input, logger)
     {
         this.boxCalculator = boxCalculator;
     }

@@ -1,3 +1,4 @@
+using CLIHelper;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,17 @@ public abstract class DiyBoxWizardBase
     : IDiyBoxWizard
 {
     private readonly IDictionary<Descriptors, IDescriptor> descriptor;
+    private readonly IInput input;
     private readonly ILogger logger;
 
     protected DiyBoxWizardBase(
         IDictionary<Descriptors, IDescriptor> descriptor
+        , IInput input
         , ILogger logger
     )
     {
         this.descriptor = descriptor;
+        this.input = input;
         this.logger = logger;
     }
 
@@ -57,6 +61,6 @@ public abstract class DiyBoxWizardBase
     {
         GetText(
             Descriptors.NextStep);
-        System.Console.ReadLine();
+        input.ReadLine();
     }
 }
