@@ -4,7 +4,7 @@ namespace DiyBox.Core;
 
 public class Size2d
 {
-    protected const string ErrorMessage = "Positive number requaried.";
+    protected const string ErrorMessage = "Positive number requaried";
 
     public double X { get; private set; }
 

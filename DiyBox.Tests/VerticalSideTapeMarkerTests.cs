@@ -4,6 +4,7 @@ using Xunit;
 namespace DiyBox.Tests;
 
 public class VerticalSideTapeMarkerTests
+    : TapeMarkerTests
 {
 	[Theory]
 	[InlineData(20, 30, 10, 40, 50)]
@@ -14,17 +15,12 @@ public class VerticalSideTapeMarkerTests
 		, double marker2
 		, double marker3)
 	{
-		var box = new Box();
-		var bc = new BoxCalculator(
-			new SheetCalculator(null, box, null), null, null);
+		var mock = SetBoxCalcMock(
+            new BoxMockData(length, heigth, 0.1, 0.1)
+            , new WasteMockData());
 		var sut = new VerticalSideTapeMarker();
 
-		box.Calculate(
-			new Size3d(
-				length
-				, heigth
-				, 0.1));
-		sut.Calculate(bc);
+		sut.Calculate(mock.Object);
 		
 		Assert.Equal(marker1, sut.GetMark("Fold1"));
 		Assert.Equal(marker2, sut.GetMark("Wall"));

@@ -24,9 +24,17 @@ public class Size3dTests
 		, double depth
 		, string param)
 	{
-		Assert.Throws<ArgumentException>(
-			param.ToLowerInvariant()
+		var paramName = param.ToLowerInvariant();
+		var ex = Assert.Throws<ArgumentException>(
+			paramName
 			, () => new Size3d(length, heigth, depth));
+		Assert.Equal(
+			string.Join(
+				" "
+				, "Positive number requaried"
+				, $"(Parameter '{paramName}')"
+			)
+			, ex.Message);
 	}
 
 	[Theory]
@@ -42,10 +50,10 @@ public class Size3dTests
 		, double depth2
 		, bool expected)
 	{
-		var sut = new Size3d(length, heigth, depth);
-		var obj = new Size3d(length2, heigth2, depth2);
+		var sut1 = new Size3d(length, heigth, depth);
+		var sut2 = new Size3d(length2, heigth2, depth2);
 
-		var actual = sut.Equals(obj);
+		var actual = sut1.Equals(sut2);
 
 		Assert.Equal(expected, actual);
 	}

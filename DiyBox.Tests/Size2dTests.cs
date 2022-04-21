@@ -20,9 +20,17 @@ public class Size2dTests
 		, double height
 		, string param)
 	{
-		Assert.Throws<ArgumentException>(
-			param.ToLowerInvariant()
+		var paramName = param.ToLowerInvariant();
+		var ex = Assert.Throws<ArgumentException>(
+			paramName
 			, () => new Size2d(length, height));
+		Assert.Equal(
+			string.Join(
+				" "
+				, "Positive number requaried"
+				, $"(Parameter '{paramName}')"
+			)
+			, ex.Message);
 	}
 
 	[Theory]
@@ -36,10 +44,10 @@ public class Size2dTests
 		, double height2
 		, bool expected)
 	{
-		var sut = new Size2d(length, height);
-		var obj = new Size2d(length2, height2);
+		var sut1 = new Size2d(length, height);
+		var sut2 = new Size2d(length2, height2);
 
-		var actual = sut.Equals(obj);
+		var actual = sut1.Equals(sut2);
 
 		Assert.Equal(expected, actual);
 	}
