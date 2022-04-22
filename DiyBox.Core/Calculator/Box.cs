@@ -18,7 +18,7 @@ public class Box
                     , size.Y)
                 , new Size2d(
                     size.X
-                    , size.Y / 2));
+                    , size.Z / 2));
 
         Side =
             new BoxWall(

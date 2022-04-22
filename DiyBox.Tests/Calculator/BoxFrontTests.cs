@@ -48,14 +48,14 @@ public class BoxFrontTests
 
 	[Theory]
 	[InlineData(10)]
-	public void Heigth_maps_to_box_front_fold_heigth(
-		double heigth)
+	public void Depth_maps_to_box_front_fold_heigth(
+		double depth)
 	{
-		var size = new Size3d(Unit, heigth, Unit);
+		var size = new Size3d(Unit, Unit, depth);
 		var sut = new Box();
 
 		sut.Calculate(size);
 
-		Assert.Equal(heigth / 2, sut.Front.Fold.Y);
+		Assert.Equal(depth / 2, sut.Front.Fold.Y);
 	}
 }
