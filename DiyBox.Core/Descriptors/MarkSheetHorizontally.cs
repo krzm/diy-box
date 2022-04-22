@@ -23,7 +23,7 @@ public class MarkSheetHorizontally
 		Add("Mark line on {0}"
 			, box.Front.Wall.X
 			, "Front1");
-		Add($"next on {0}"
+		Add("next on {0}"
 			, box.Side.Wall.X
 			, "Side1");
 		Add("Repeat those, once, to the end of the sheet");
