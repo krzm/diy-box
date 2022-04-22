@@ -7,10 +7,10 @@ public class DiyBoxWizardTests
     : DiyBoxIntegrationTests
 {
 	[Theory]
-	[InlineData(new object[] { 15, 10, 20, 5, true, false, 2.5, 75, 25
+	[InlineData(new object[] { 15, 10, 20, 5, false, true, 2.5, 75, 30
         , new double[] { 15, 35, 50, 70, 75 }
-        , new double[] { 2.5, 7.5, 17.5, 22.5, 25 }
-        , new double[] { 7.5, 17.5, 25 }})]
+        , new double[] { 10, 20, 30 }
+        , new double[] { 2.5, 10, 20, 27.5, 30 }})]
 	public void Test_Box(
 		double length
 		, double heigth
@@ -34,7 +34,7 @@ public class DiyBoxWizardTests
         Assert.Equal(length, Box?.Front.Wall.X);
         Assert.Equal(heigth, Box?.Front.Wall.Y);
         Assert.Equal(length, Box?.Front.Fold.X);
-        Assert.Equal(heigth/2, Box?.Front.Fold.Y);
+        Assert.Equal(depth/2, Box?.Front.Fold.Y);
 
         Assert.Equal(depth, Box?.Side.Wall.X);
         Assert.Equal(heigth, Box?.Side.Wall.Y);
@@ -68,28 +68,28 @@ public class DiyBoxWizardTests
 
         Assert.Equal(
             verticalFrontMarkers[0]
-            , TapeMarkers?[Markers.VerticalFront].GetMark("Waste1"));
-        Assert.Equal(
-            verticalFrontMarkers[1]
             , TapeMarkers?[Markers.VerticalFront].GetMark("Fold1"));
         Assert.Equal(
-            verticalFrontMarkers[2]
+            verticalFrontMarkers[1]
             , TapeMarkers?[Markers.VerticalFront].GetMark("Wall"));
         Assert.Equal(
-            verticalFrontMarkers[3]
+            verticalFrontMarkers[2]
             , TapeMarkers?[Markers.VerticalFront].GetMark("Fold2"));
-        Assert.Equal(
-            verticalFrontMarkers[4]
-            , TapeMarkers?[Markers.VerticalFront].GetMark("Waste2"));
 
-         Assert.Equal(
+        Assert.Equal(
             verticalSideMarkers[0]
-            , TapeMarkers?[Markers.VerticalSide].GetMark("Fold1"));
+            , TapeMarkers?[Markers.VerticalSide].GetMark("Waste1"));
         Assert.Equal(
             verticalSideMarkers[1]
-            , TapeMarkers?[Markers.VerticalSide].GetMark("Wall"));
+            , TapeMarkers?[Markers.VerticalSide].GetMark("Fold1"));
         Assert.Equal(
             verticalSideMarkers[2]
+            , TapeMarkers?[Markers.VerticalSide].GetMark("Wall"));
+        Assert.Equal(
+            verticalSideMarkers[3]
             , TapeMarkers?[Markers.VerticalSide].GetMark("Fold2"));
+        Assert.Equal(
+            verticalSideMarkers[4]
+            , TapeMarkers?[Markers.VerticalSide].GetMark("Waste2"));
     }
 }
