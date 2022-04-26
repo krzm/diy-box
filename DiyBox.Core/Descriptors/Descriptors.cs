@@ -10,5 +10,6 @@ public enum Descriptors
 	, MarkSheetHorizontally
 	, MarkSheetVerticallyFront
 	, MarkSheetVerticallySide
-	, FoldBox	
+	, FoldBox
+    , PrintOnSheet
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DiyBox.Core;
 
@@ -25,6 +26,11 @@ public abstract class TapeMarker
     public double GetMark(string markName)
     {
         return marks[markName];
+    }
+
+    public double[] GetMarks()
+    {
+        return marks.Values.ToArray();
     }
 
     protected void Add(

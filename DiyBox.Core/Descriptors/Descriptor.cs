@@ -26,12 +26,12 @@ public abstract class Descriptor<TData>
 	{
 		sb.AppendLine(line);
 	}
-
-	protected void Add(
+    
+    protected void Add<TType>(
 		string lineFormat
-		, double cm
+		, params TType[] dims
 	)
 	{
-		sb.AppendFormat(lineFormat, cm);
+		sb.AppendFormat(lineFormat, dims);
 	}
 }
