@@ -14,8 +14,8 @@ public class MarkSheetVerticallySide
     {
 		var box = bc.SheetCalculator.Box;
 		var waste = bc.Waste;
-		Add("Step 4");
-		Add("Move to next vertical line on the right (side wall)");
+		AddLine("Step 4");
+		AddLine("Move to next vertical line on the right (side wall)");
 		if(waste.IsSideWaste == false)
         {
             SetDescription(box);
@@ -24,8 +24,8 @@ public class MarkSheetVerticallySide
         {
 			SetDescriptionWithWaste(box, waste);
         }
-		Add("Repeat step 3 and 4 on two remaining vertical lines");
-		Add("Connect horizontally, markers you just did on vertical lines");
+		AddLine("Repeat step 3 and 4 on two remaining vertical lines");
+		AddLine("Connect horizontally, markers you just did on vertical lines");
     }
 
     private void SetDescription(IBox box)
@@ -48,7 +48,7 @@ public class MarkSheetVerticallySide
 		Add("From top going down, mark line on {0}"
 			, waste.WasteHeight
 			, "Waste1");
-		Add("Mark it with X as a waste");
+		AddLine("Mark it with X as a waste");
 		Add("Next mark at {0} down"
 			, box.Side.Fold.Y
 			, "Fold1");
@@ -61,6 +61,6 @@ public class MarkSheetVerticallySide
 		Add("Check down again, if remaining length is {0}"
 			, waste.WasteHeight
 			, "Waste2");
-		Add("Mark it with X as a waste");
+		AddLine("Mark it with X as a waste");
     }
 }

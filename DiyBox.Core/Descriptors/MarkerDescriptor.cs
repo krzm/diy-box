@@ -22,6 +22,6 @@ public abstract class MarkerDescriptor<TData>
 
     private void Mark(string markKey)
     {
-        Add($" (Measuring tape {tapeMarker.GetMark(markKey)})");
+        AddLine($" (Measuring tape {tapeMarker.GetMark(markKey)})");
     }
 }

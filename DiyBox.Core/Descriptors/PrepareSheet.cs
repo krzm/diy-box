@@ -6,8 +6,8 @@ public class PrepareSheet
     protected override void DefineDescription(
 		Sheet sheet)
     {
-		Add("Step 1");
-		Add("Prepare cardboard sheet");
-		Add($"of length {sheet.Size.X} and heigth {sheet.Size.Y}");
+		AddLine("Step 1");
+		AddLine("Prepare cardboard sheet");
+		AddLine($"of length {sheet.Size.X} and heigth {sheet.Size.Y}");
     }
 }

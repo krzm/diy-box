@@ -28,9 +28,9 @@ public abstract class TapeMarker
         return marks[markName];
     }
 
-    public double[] GetMarks()
+    public object[] GetMarks()
     {
-        return marks.Values.ToArray();
+        return marks.Select(m=> (object)m.Value).ToArray();
     }
 
     protected void Add(

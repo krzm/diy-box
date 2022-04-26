@@ -5,6 +5,6 @@ public class NextStep
 {
     protected override void DefineDescription(object data)
     {
-        Add("Push Enter for next step");
+        AddLine("Push Enter for next step");
     }
 }

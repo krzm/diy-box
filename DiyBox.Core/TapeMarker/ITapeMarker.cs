@@ -5,5 +5,5 @@ public interface ITapeMarker
 {
     double GetMark(string markName);
 
-    double[] GetMarks();
+    object[] GetMarks();
 }

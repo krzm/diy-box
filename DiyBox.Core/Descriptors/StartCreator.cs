@@ -5,6 +5,6 @@ public class StartCreator
 {
     protected override void DefineDescription(object data)
     {
-		Add("Step by Step Box Creator");
+		AddLine("Step by Step Box Creator");
     }
 }

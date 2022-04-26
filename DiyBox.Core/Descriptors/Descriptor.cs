@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 
 namespace DiyBox.Core;
@@ -22,16 +23,25 @@ public abstract class Descriptor<TData>
 
     protected abstract void DefineDescription(TData data);
 
-    protected void Add(string line)
+    protected void AddLine(string line)
 	{
 		sb.AppendLine(line);
 	}
     
-    protected void Add<TType>(
-		string lineFormat
-		, params TType[] dims
+    protected void Add(
+		string format
+		, params object[] dims
 	)
 	{
-		sb.AppendFormat(lineFormat, dims);
+		sb.AppendFormat(format, dims);
+	}
+
+    protected void AddLine(
+		string format
+		, params object[] dims
+	)
+	{
+		Add(format, dims);
+        sb.AppendLine();
 	}
 }

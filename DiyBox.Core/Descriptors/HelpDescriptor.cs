@@ -6,7 +6,7 @@ public class HelpDescriptor
 	protected override void DefineDescription(
 		string message)
     {
-		Add($"Error: {message}");
+		AddLine($"Error: {message}");
 		HandleMessagesOnErrors(message);
     }
 
@@ -33,12 +33,12 @@ public class HelpDescriptor
 
 	private void ProvideMessageForArgsNumberError()
 	{
-		Add("Provide three numbers");
-		Add("X, Y - length and heigth of the box front; Z - box depth");
+		AddLine("Provide three numbers");
+		AddLine("X, Y - length and heigth of the box front; Z - box depth");
 	}
 
 	private void ProvideMessageForArgsFromatError()
 	{
-		Add("Provide number grater than zero");
+		AddLine("Provide number grater than zero");
 	}
 }

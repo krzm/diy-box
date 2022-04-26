@@ -14,8 +14,8 @@ public class MarkSheetVerticallyFront
     {
         var box = bc.SheetCalculator.Box;
         var waste = bc.Waste;
-        Add("Step 3");
-		Add("Mark vertically, front and back walls");
+        AddLine("Step 3");
+		AddLine("Mark vertically, front and back walls");
 		if(waste.IsFrontWaste == false)
         {
             SetDescription(box);
@@ -44,7 +44,7 @@ public class MarkSheetVerticallyFront
         Add("Next go to top, left line and mark {0} from top going down"
 			, waste.WasteHeight
 			, "Waste1");
-        Add("Mark it with X as a waste");
+        AddLine("Mark it with X as a waste");
         Add("Next mark at {0} down"
             , box.Front.Fold.Y
             , "Fold1");
@@ -57,6 +57,6 @@ public class MarkSheetVerticallyFront
         Add("Check down again, if remaining length is {0}"
             , waste.WasteHeight
             , "Waste2");
-        Add("Mark it with X as a waste");
+        AddLine("Mark it with X as a waste");
     }
 }
