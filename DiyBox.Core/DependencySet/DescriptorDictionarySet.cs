@@ -36,6 +36,7 @@ public class DescriptorDictionarySet
 		Add(c, d, Descriptors.MarkSheetVerticallyFront);
 		Add(c, d, Descriptors.MarkSheetVerticallySide);
 		Add(c, d, Descriptors.FoldBox);
+		Add(c, d, Descriptors.PrintOnSheet);
 		return d;
     }
 

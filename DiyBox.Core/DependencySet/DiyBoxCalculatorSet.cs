@@ -5,10 +5,10 @@ using Unity.Injection;
 
 namespace DiyBox.Core;
 
-public class DiyBoxSet 
+public class DiyBoxCalculatorSet 
     : UnityDependencySet
 {
-    public DiyBoxSet(
+    public DiyBoxCalculatorSet(
         IUnityContainer container) 
         : base(container)
     {
@@ -36,11 +36,6 @@ public class DiyBoxSet
                     , Container.Resolve<IWaste>()
                     , Container.Resolve<List<ITapeMarker>>()
                 )
-            )
-            
-            .RegisterSingleton<IDiyBoxWizard, SheetWizard>(
-                nameof(SheetWizard))
-            .RegisterSingleton<IDiyBoxWizard, DiyBoxWizard>(
-                nameof(DiyBoxWizard));
+            );
     }
 }
