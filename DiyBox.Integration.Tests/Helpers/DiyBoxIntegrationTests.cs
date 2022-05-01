@@ -7,12 +7,12 @@ namespace DiyBox.Integration.Tests;
 
 public abstract class DiyBoxIntegrationTests
 {
-    private IBox? box;
+    private IBoxCalc? box;
     private IWaste? waste;
     private ISheet? sheet;
     private IDictionary<Markers, ITapeMarker>? markers;
 
-    protected IBox? Box => box;
+    protected IBoxCalc? Box => box;
     protected IWaste? Waste => waste;
     protected ISheet? Sheet => sheet;
     protected IDictionary<Markers, ITapeMarker>? TapeMarkers => markers;
@@ -21,7 +21,7 @@ public abstract class DiyBoxIntegrationTests
         LoggerMock logger
         , IInput input)
     {
-        box = new Box();
+        box = new BoxCalcWithWasteInFolds();
         sheet = new Sheet();
         waste = new Waste();
         markers = GetTapeMarkers();

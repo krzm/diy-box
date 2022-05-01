@@ -5,10 +5,10 @@ using Unity.Injection;
 
 namespace DiyBox.Core;
 
-public class DiyBoxCalculatorSet 
+public class DiyBoxWithEvenFoldsSet 
     : UnityDependencySet
 {
-    public DiyBoxCalculatorSet(
+    public DiyBoxWithEvenFoldsSet(
         IUnityContainer container) 
         : base(container)
     {
@@ -17,19 +17,20 @@ public class DiyBoxCalculatorSet
     public override void Register()
     {
         Container
-            .RegisterSingleton<IArgsParser<Size3d>, DiyBoxParser>()
-            .RegisterSingleton<IBox, Box>()
+            .RegisterSingleton<IArgsParser<Size3d>, DiyBoxParser>();
+        RegisterBoxCalc();
+        Container
             .RegisterSingleton<ISheet, Sheet>()
             .RegisterSingleton<ISheetCalculator, SheetCalculator>()
             .RegisterSingleton<IWaste, Waste>()
-            
+
             .RegisterSingleton<ITapeMarker, HorizontalTapeMarker>(
                 nameof(HorizontalTapeMarker))
             .RegisterSingleton<ITapeMarker, VerticalFrontTapeMarker>(
                 nameof(VerticalFrontTapeMarker))
             .RegisterSingleton<ITapeMarker, VerticalSideTapeMarker>(
                 nameof(VerticalSideTapeMarker))
-            
+
             .RegisterSingleton<IBoxCalculator, BoxCalculator>(
                 new InjectionConstructor(
                     Container.Resolve<ISheetCalculator>()
@@ -37,5 +38,11 @@ public class DiyBoxCalculatorSet
                     , Container.Resolve<List<ITapeMarker>>()
                 )
             );
+    }
+
+    protected virtual void RegisterBoxCalc()
+    {
+        Container
+            .RegisterSingleton<IBoxCalc, BoxCalcWithEvenFolds>();
     }
 }

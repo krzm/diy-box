@@ -26,7 +26,7 @@ public class MarkSheetVerticallyFront
         }
     }
 
-    private void SetDescription(IBox box)
+    private void SetDescription(IBoxCalc box)
     {
 		Add("Next go to top, left line and mark {0} from top going down"
 			, box.Front.Fold.Y
@@ -39,7 +39,7 @@ public class MarkSheetVerticallyFront
             , "Fold2");
     }
 
-    private void SetDescriptionWithWaste(IBox box, IWaste waste)
+    private void SetDescriptionWithWaste(IBoxCalc box, IWaste waste)
     {
         Add("Next go to top, left line and mark {0} from top going down"
 			, waste.WasteHeight

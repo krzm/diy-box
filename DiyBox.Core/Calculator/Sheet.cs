@@ -9,7 +9,7 @@ public class Sheet
 
     public Size2d Size => size;
 
-    public ISheet Calculate(IBox box)
+    public ISheet Calculate(IBoxCalc box)
     {
         size = new Size2d(
             GetSheetLength(box)
@@ -17,7 +17,7 @@ public class Sheet
         return this;
     }
 
-    private double GetSheetLength(IBox box)
+    private double GetSheetLength(IBoxCalc box)
     {
         return 
             (box.Front.Wall.X + box.Side.Wall.X) 
@@ -25,7 +25,7 @@ public class Sheet
             + box.WallFlap;
     }
 
-    private double GetSheetHeight(IBox box)
+    private double GetSheetHeight(IBoxCalc box)
     {
         var frontHeight = 
             box.Front.Wall.Y 

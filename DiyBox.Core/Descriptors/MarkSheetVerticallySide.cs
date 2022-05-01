@@ -28,7 +28,7 @@ public class MarkSheetVerticallySide
 		AddLine("Connect horizontally, markers you just did on vertical lines");
     }
 
-    private void SetDescription(IBox box)
+    private void SetDescription(IBoxCalc box)
     {
 		Add("From top going dowan, mark line on {0}"
 			, box.Side.Fold.Y
@@ -42,7 +42,7 @@ public class MarkSheetVerticallySide
     }
 
 	private void SetDescriptionWithWaste(
-		IBox box
+		IBoxCalc box
 		, IWaste waste)
     {
 		Add("From top going down, mark line on {0}"

@@ -21,7 +21,7 @@ public class VerticalFrontTapeMarker
     }
 
     private void Mark(
-        IBox box
+        IBoxCalc box
 		, IWaste waste)
     {
         Add("Fold1"
@@ -37,7 +37,7 @@ public class VerticalFrontTapeMarker
     }
 
     private void MarkWithWaste(
-        IBox box
+        IBoxCalc box
 		, IWaste waste)
     {
         Add("Waste1"

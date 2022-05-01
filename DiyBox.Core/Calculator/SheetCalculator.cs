@@ -4,16 +4,16 @@ public class SheetCalculator
     : ISheetCalculator
 {
     private readonly IArgsParser<Size3d> parser;
-    private readonly IBox box;
+    private readonly IBoxCalc box;
     private readonly ISheet sheet;
 
     public Size3d BoxSize { get; private set; }
-    public IBox Box { get; private set; }
+    public IBoxCalc Box { get; private set; }
     public ISheet Sheet { get; private set; }
 
     public SheetCalculator(
         IArgsParser<Size3d> parser
-        , IBox box
+        , IBoxCalc box
         , ISheet sheet
     )
     {

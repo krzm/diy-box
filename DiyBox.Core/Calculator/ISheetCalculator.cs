@@ -4,6 +4,6 @@ public interface ISheetCalculator
     : ICalculator<string[], ISheetCalculator>
 {
     Size3d BoxSize { get; }
-    IBox Box { get; }
+    IBoxCalc Box { get; }
     ISheet Sheet { get; }
 }

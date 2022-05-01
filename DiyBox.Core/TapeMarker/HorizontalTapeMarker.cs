@@ -6,7 +6,7 @@ public class HorizontalTapeMarker
     protected override ITapeMarker CalcMarks(
         object data)
     {
-        var box = (IBox)data;
+        var box = (IBoxCalc)data;
         Add(
             "Front1"
             , box.Front.Wall.X);
