@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DiyBox.Core;
+﻿namespace DiyBox.Core;
 
 public class MarkSheetHorizontally 
 	: MarkerDescriptor<IBoxCalculator>

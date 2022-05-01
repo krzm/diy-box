@@ -1,5 +1,4 @@
 ﻿using DiyBox.Core;
-using System;
 using Xunit;
 
 namespace DiyBox.Tests;

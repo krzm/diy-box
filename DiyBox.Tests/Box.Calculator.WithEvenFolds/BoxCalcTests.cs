@@ -1,4 +1,3 @@
-using System;
 using DiyBox.Core;
 
 namespace DiyBox.Tests.WithEvenFolds;

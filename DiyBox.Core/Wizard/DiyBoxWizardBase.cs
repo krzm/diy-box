@@ -1,7 +1,5 @@
 using CLIHelper;
 using Serilog;
-using System;
-using System.Collections.Generic;
 
 namespace DiyBox.Core;
 
