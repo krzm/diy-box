@@ -5,10 +5,10 @@ namespace DiyBox.Tests;
 
 public abstract class TapeMarkerTests
 {
-    protected Mock<IBox> SetBoxMock(
+    protected Mock<IBoxCalc> SetBoxMock(
         BoxMockData d)
     {
-        var mock = new Mock<IBox>();
+        var mock = new Mock<IBoxCalc>();
         var frontWall = new Size2d(d.Length, d.Heigth);
         var frontFold = new Size2d(d.Length, d.Heigth/2);
         var front = new BoxWall(frontWall, frontFold);
@@ -32,7 +32,7 @@ public abstract class TapeMarkerTests
     }
 
     protected Mock<ISheetCalculator> SetSheetCalcMock(
-        IBox box)
+        IBoxCalc box)
     {
 		var mock = new Mock<ISheetCalculator>();
         mock.Setup(c => c.Box)

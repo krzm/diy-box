@@ -1,9 +1,10 @@
 ﻿using DiyBox.Core;
 using Xunit;
 
-namespace DiyBox.Tests;
+namespace DiyBox.Tests.WithEvenFolds;
 
 public class BoxWallFlapTests
+    : BoxCalcTests
 {
 	private const double Unit = .1;
 
@@ -18,7 +19,7 @@ public class BoxWallFlapTests
 		, int flop)
 	{
 		var size = new Size3d(length, Unit, Unit);
-		var sut = new Box();
+		var sut = GetSut();
 
 		sut.Calculate(size);
 

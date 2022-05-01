@@ -1,9 +1,10 @@
 ﻿using DiyBox.Core;
 using Xunit;
 
-namespace DiyBox.Tests;
+namespace DiyBox.Tests.WithEvenFolds;
 
 public class BoxFrontTests
+    : BoxCalcTests
 {
 	private const double Unit = .1;
 
@@ -13,11 +14,11 @@ public class BoxFrontTests
 		double length)
     {
         var size = new Size3d(length, Unit, Unit);
-        var sut = new Box();
+        var sut = GetSut();
 
         sut.Calculate(size);
 
-        Assert.Equal(length, sut.Front.Wall.X);
+        Assert.Equal(length, sut?.Front?.Wall.X);
     }
 
     [Theory]
@@ -26,11 +27,11 @@ public class BoxFrontTests
 		double heigth)
 	{
 		var size = new Size3d(Unit, heigth, Unit);
-		var sut = new Box();
+		var sut = GetSut();
 
 		sut.Calculate(size);
 
-		Assert.Equal(heigth, sut.Front.Wall.Y);
+		Assert.Equal(heigth, sut?.Front?.Wall.Y);
 	}
 
 	[Theory]
@@ -39,23 +40,27 @@ public class BoxFrontTests
 		double length)
 	{
 		var size = new Size3d(length, Unit, Unit);
-		var sut = new Box();
+		var sut = GetSut();
 
 		sut.Calculate(size);
 
-		Assert.Equal(length, sut.Front.Fold.X);
+		Assert.Equal(length, sut?.Front?.Fold.X);
 	}
 
 	[Theory]
-	[InlineData(10)]
+	[InlineData(10, 10)]
+    [InlineData(20, 10)]
+    [InlineData(10, 20)]
 	public void Depth_maps_to_box_front_fold_heigth(
-		double depth)
-	{
-		var size = new Size3d(Unit, Unit, depth);
-		var sut = new Box();
+        double length
+		, double depth)
+    {
+        var size = new Size3d(length, Unit, depth);
+        var sut = GetSut();
 
-		sut.Calculate(size);
+        sut.Calculate(size);
 
-		Assert.Equal(depth / 2, sut.Front.Fold.Y);
-	}
+        Assert.Equal(GetExpectedFrontFoldHeigth(size)
+            , sut?.Front?.Fold.Y);
+    }
 }
