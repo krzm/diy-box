@@ -7,9 +7,9 @@ public class SheetCalculator
     private readonly IBoxCalc box;
     private readonly ISheet sheet;
 
-    public Size3d BoxSize { get; private set; }
-    public IBoxCalc Box { get; private set; }
-    public ISheet Sheet { get; private set; }
+    public Size3d? BoxSize { get; private set; }
+    public IBoxCalc? Box { get; private set; }
+    public ISheet? Sheet { get; private set; }
 
     public SheetCalculator(
         IArgsParser<Size3d> parser

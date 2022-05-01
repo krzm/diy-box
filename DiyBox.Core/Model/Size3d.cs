@@ -19,9 +19,11 @@ public class Size3d
         Z = z;
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
-        return Equals(obj as Size3d);
+        var size = obj as Size3d;
+        if(size == null) return false;
+        return Equals(size);
     }
 
     public bool Equals(Size3d other)

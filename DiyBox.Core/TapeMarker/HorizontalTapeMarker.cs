@@ -1,3 +1,5 @@
+using System;
+
 namespace DiyBox.Core;
 
 public class HorizontalTapeMarker 
@@ -7,6 +9,8 @@ public class HorizontalTapeMarker
         object data)
     {
         var box = (IBoxCalc)data;
+        ArgumentNullException.ThrowIfNull(box.Front);
+        ArgumentNullException.ThrowIfNull(box.Side);
         Add(
             "Front1"
             , box.Front.Wall.X);

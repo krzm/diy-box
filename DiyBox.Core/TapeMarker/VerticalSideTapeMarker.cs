@@ -1,3 +1,5 @@
+using System;
+
 namespace DiyBox.Core;
 
 public class VerticalSideTapeMarker 
@@ -7,9 +9,13 @@ public class VerticalSideTapeMarker
         object data)
     {
         var bc = (IBoxCalculator)data;
-        var box = bc.SheetCalculator.Box;
+        var sc = bc.SheetCalculator;
+        ArgumentNullException.ThrowIfNull(sc);
+        var box = sc.Box;
+        ArgumentNullException.ThrowIfNull(box);
         var waste = bc.Waste;
-        if(bc.Waste.IsSideWaste == false)
+        ArgumentNullException.ThrowIfNull(waste);
+        if(waste.IsSideWaste == false)
         {
             Mark(box, waste);
         }
@@ -24,6 +30,7 @@ public class VerticalSideTapeMarker
         IBoxCalc box
         , IWaste waste)
     {
+        ArgumentNullException.ThrowIfNull(box.Side);
         Add("Fold1"
             , box.Side.Fold.Y);
         Add(
@@ -40,6 +47,7 @@ public class VerticalSideTapeMarker
         IBoxCalc box
         , IWaste waste)
     {
+        ArgumentNullException.ThrowIfNull(box.Side);
         Add("Waste1"
             , waste.WasteHeight);
         Add(

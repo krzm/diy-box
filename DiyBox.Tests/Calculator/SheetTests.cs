@@ -20,7 +20,7 @@ public class SheetTests
 
 		sut.Calculate(mock.Object);
 
-		Assert.Equal(sheetLength, sut.Size.X);
+		Assert.Equal(sheetLength, sut?.Size?.X);
 	}
 
 	[Theory]
@@ -37,6 +37,6 @@ public class SheetTests
 
 		sut.Calculate(mock.Object);
 
-		Assert.Equal(sheetHeigth, sut.Size.Y);
+		Assert.Equal(sheetHeigth, sut?.Size?.Y);
 	}
 }

@@ -8,7 +8,7 @@ public class DiyBoxParserTests
 {
 	[Theory]
 	[InlineData(new object[] {
-		new string[] { null } })]
+		new string[] { null! } })]
 	[InlineData(new object[] {
 		new string[] { "" } })]
 	[InlineData(new object[] {

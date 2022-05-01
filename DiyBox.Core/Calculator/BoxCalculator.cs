@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,15 +10,15 @@ public class BoxCalculator
     private readonly ISheetCalculator sheetCalculator;
     private readonly IWaste waste;
     private readonly List<ITapeMarker> tapeMarkers;
-    private readonly ITapeMarker horizontalTapeMarker;
-    private readonly ITapeMarker verticalFrontTapeMarker;
-    private readonly ITapeMarker verticalSideTapeMarker;
+    private readonly ITapeMarker? horizontalTapeMarker;
+    private readonly ITapeMarker? verticalFrontTapeMarker;
+    private readonly ITapeMarker? verticalSideTapeMarker;
 
-    public ISheetCalculator SheetCalculator { get; private set; }
-    public IWaste Waste { get; private set; }
-    public ITapeMarker HorizontalTapeMarker { get; private set; }
-    public ITapeMarker VerticalFrontTapeMarker { get; private set; }
-    public ITapeMarker VerticalSideTapeMarker { get; private set; }
+    public ISheetCalculator? SheetCalculator { get; private set; }
+    public IWaste? Waste { get; private set; }
+    public ITapeMarker? HorizontalTapeMarker { get; private set; }
+    public ITapeMarker? VerticalFrontTapeMarker { get; private set; }
+    public ITapeMarker? VerticalSideTapeMarker { get; private set; }
 
     public BoxCalculator(
         ISheetCalculator sheetCalculator
@@ -38,17 +39,17 @@ public class BoxCalculator
 
     public IBoxCalculator Calculate(string[] args)
     {
-        SheetCalculator = sheetCalculator.Calculate(args);
-        Waste = waste.Calculate(SheetCalculator);
+        SheetCalculator = sheetCalculator?.Calculate(args);
+        ArgumentNullException.ThrowIfNull(SheetCalculator);
+        Waste = waste?.Calculate(SheetCalculator);
+        var box = SheetCalculator?.Box;
+        ArgumentNullException.ThrowIfNull(box);
         HorizontalTapeMarker = 
-            horizontalTapeMarker.Calculate(
-                SheetCalculator.Box);
+            horizontalTapeMarker?.Calculate(box);
         VerticalFrontTapeMarker = 
-            verticalFrontTapeMarker.Calculate(
-                this);
+            verticalFrontTapeMarker?.Calculate(this);
         VerticalSideTapeMarker = 
-            verticalSideTapeMarker.Calculate(
-                this);
+            verticalSideTapeMarker?.Calculate(this);
         return this;
     }
 }

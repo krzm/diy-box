@@ -1,4 +1,6 @@
-﻿namespace DiyBox.Core;
+﻿using System;
+
+namespace DiyBox.Core;
 
 public class MarkSheetVerticallySide 
 	: MarkerDescriptor<IBoxCalculator>
@@ -12,10 +14,13 @@ public class MarkSheetVerticallySide
     protected override void DefineDescription(
 		IBoxCalculator bc)
     {
+        ArgumentNullException.ThrowIfNull(bc.SheetCalculator);
 		var box = bc.SheetCalculator.Box;
 		var waste = bc.Waste;
 		AddLine("Step 4");
 		AddLine("Move to next vertical line on the right (side wall)");
+        ArgumentNullException.ThrowIfNull(waste);
+        ArgumentNullException.ThrowIfNull(box);
 		if(waste.IsSideWaste == false)
         {
             SetDescription(box);
@@ -30,6 +35,7 @@ public class MarkSheetVerticallySide
 
     private void SetDescription(IBoxCalc box)
     {
+        ArgumentNullException.ThrowIfNull(box.Side);
 		Add("From top going dowan, mark line on {0}"
 			, box.Side.Fold.Y
 			, "Fold1");
@@ -49,6 +55,7 @@ public class MarkSheetVerticallySide
 			, waste.WasteHeight
 			, "Waste1");
 		AddLine("Mark it with X as a waste");
+        ArgumentNullException.ThrowIfNull(box.Side);
 		Add("Next mark at {0} down"
 			, box.Side.Fold.Y
 			, "Fold1");

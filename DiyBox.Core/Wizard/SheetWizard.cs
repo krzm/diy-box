@@ -1,5 +1,6 @@
 ﻿using CLIHelper;
 using Serilog;
+using System;
 using System.Collections.Generic;
 
 namespace DiyBox.Core;
@@ -26,6 +27,7 @@ public class SheetWizard
 
     protected override void DefineWizardSteps()
     {
+        ArgumentNullException.ThrowIfNull(sheetCalculator.Sheet);
         GetText(
             Descriptors.PrepareSheet
             , sheetCalculator.Sheet);

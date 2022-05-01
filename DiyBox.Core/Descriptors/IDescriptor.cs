@@ -2,5 +2,5 @@
 
 public interface IDescriptor
 {
-	public string GetDescription(object data = default);
+	public string GetDescription(object data);
 }

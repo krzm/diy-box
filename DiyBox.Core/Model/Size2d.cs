@@ -26,9 +26,11 @@ public class Size2d
         Y = y;
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
-        return Equals(obj as Size2d);
+        var size = obj as Size2d;
+        if(size == null) return false;
+        return Equals(size);
     }
 
     public bool Equals(Size2d other)

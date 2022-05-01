@@ -63,7 +63,7 @@ public class Size3dTests
 	{
 		var sut = new Size3d(20, 10, 5);
 
-		var actual = sut.Equals(null);
+		var actual = sut.Equals(null!);
 
 		Assert.False(actual);
 	}

@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 
 namespace DiyBox.Core;
@@ -13,7 +12,7 @@ public abstract class Descriptor<TData>
 		sb = new StringBuilder();
 	}
 
-    public string GetDescription(object data = null)
+    public string GetDescription(object data)
 	{
 		var dataType = (TData)data;
 		sb.Clear();

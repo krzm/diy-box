@@ -1,3 +1,5 @@
+using System;
+
 namespace DiyBox.Core;
 
 public class VerticalFrontTapeMarker 
@@ -7,9 +9,13 @@ public class VerticalFrontTapeMarker
         object data)
     {
         var bc = (IBoxCalculator)data;
-        var box = bc.SheetCalculator.Box;
+        var sc = bc.SheetCalculator;
+        ArgumentNullException.ThrowIfNull(sc);
+        var box = sc.Box;
+        ArgumentNullException.ThrowIfNull(box);
         var waste = bc.Waste;
-        if(bc.Waste.IsFrontWaste == false)
+        ArgumentNullException.ThrowIfNull(waste);
+        if(waste.IsFrontWaste == false)
         {
             Mark(box, waste);
         }
@@ -24,6 +30,7 @@ public class VerticalFrontTapeMarker
         IBoxCalc box
 		, IWaste waste)
     {
+        ArgumentNullException.ThrowIfNull(box.Front);
         Add("Fold1"
             , box.Front.Fold.Y);
         Add(
@@ -40,6 +47,7 @@ public class VerticalFrontTapeMarker
         IBoxCalc box
 		, IWaste waste)
     {
+        ArgumentNullException.ThrowIfNull(box.Front);
         Add("Waste1"
             , waste.WasteHeight);
         Add(

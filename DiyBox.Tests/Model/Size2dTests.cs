@@ -57,7 +57,7 @@ public class Size2dTests
 	{
 		var sut = new Size2d(20, 10);
 
-		var actual = sut.Equals(null);
+		var actual = sut.Equals(null!);
 
 		Assert.False(actual);
 	}

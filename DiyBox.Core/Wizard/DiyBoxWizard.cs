@@ -1,5 +1,6 @@
 ﻿using CLIHelper;
 using Serilog;
+using System;
 using System.Collections.Generic;
 
 namespace DiyBox.Core;
@@ -28,10 +29,13 @@ public class DiyBoxWizard
     {
         var bc = boxCalculator;
         var sc = bc.SheetCalculator;
+        ArgumentNullException.ThrowIfNull(sc);
+        ArgumentNullException.ThrowIfNull(sc.BoxSize);
+        ArgumentNullException.ThrowIfNull(sc.Sheet);
         GetText(
             Descriptors.BoxDimension
             , sc.BoxSize);
-        GetText(Descriptors.StartCreator);
+        GetText(Descriptors.StartCreator, new Object());
         NextStep();
         GetText(
             Descriptors.PrepareSheet
@@ -49,6 +53,6 @@ public class DiyBoxWizard
             Descriptors.MarkSheetVerticallySide
             , bc);
         NextStep();
-        GetText(Descriptors.FoldBox);
+        GetText(Descriptors.FoldBox, new Object());
     }
 }

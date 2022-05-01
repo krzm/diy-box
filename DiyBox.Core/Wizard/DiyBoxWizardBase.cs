@@ -50,7 +50,7 @@ public abstract class DiyBoxWizardBase
 
     protected void GetText(
         Descriptors descriptorKey
-        , object data = null)
+        , object data)
     {
         logger.Information(
             descriptor[descriptorKey]
@@ -60,7 +60,8 @@ public abstract class DiyBoxWizardBase
     protected void NextStep()
     {
         GetText(
-            Descriptors.NextStep);
+            Descriptors.NextStep
+            , new Object());
         input.ReadLine();
     }
 }

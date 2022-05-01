@@ -1,4 +1,6 @@
-﻿namespace DiyBox.Core;
+﻿using System;
+
+namespace DiyBox.Core;
 
 public class Waste 
 	: IWaste
@@ -28,10 +30,14 @@ public class Waste
     }
 
     private void CalcFrontWaste(ISheetCalculator c)
-    {
+    {   
+        ArgumentNullException.ThrowIfNull(c.Box);
+        ArgumentNullException.ThrowIfNull(c.Box.Front);
         var frontHeight =
             c.Box.Front.Fold.Y * 2
             + c.Box.Front.Wall.Y;
+        ArgumentNullException.ThrowIfNull(c.Sheet);
+        ArgumentNullException.ThrowIfNull(c.Sheet.Size);
         var frontWaste =
             (c.Sheet.Size.Y - frontHeight) / 2;
         if (frontWaste > 0)
@@ -43,9 +49,13 @@ public class Waste
 
     private void CalcSideWaste(ISheetCalculator c)
     {
+        ArgumentNullException.ThrowIfNull(c.Box);
+        ArgumentNullException.ThrowIfNull(c.Box.Side);
         var sideHeight =
             c.Box.Side.Fold.Y * 2
             + c.Box.Side.Wall.Y;
+        ArgumentNullException.ThrowIfNull(c.Sheet);
+        ArgumentNullException.ThrowIfNull(c.Sheet.Size);
         var sideWaste =
             (c.Sheet.Size.Y - sideHeight) / 2;
         if (sideWaste > 0)

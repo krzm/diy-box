@@ -1,4 +1,6 @@
-﻿namespace DiyBox.Core;
+﻿using System;
+
+namespace DiyBox.Core;
 
 public class MarkSheetHorizontally 
 	: MarkerDescriptor<IBoxCalculator>
@@ -12,6 +14,7 @@ public class MarkSheetHorizontally
     protected override void DefineDescription(
 		IBoxCalculator bc)
     {
+        ArgumentNullException.ThrowIfNull(bc.SheetCalculator);
 		var box = bc.SheetCalculator.Box;
         AddLine("Step 2");
 		AddLine("Box 2d layout");
@@ -20,9 +23,12 @@ public class MarkSheetHorizontally
 		AddLine("is placed before you horizontally");
 		AddLine("with it's length dimmention from left to right");
 		AddLine("Mark top, from left to right, accros length of the sheet");
+        ArgumentNullException.ThrowIfNull(box);
+        ArgumentNullException.ThrowIfNull(box.Front);
 		Add("Mark line on {0}"
 			, box.Front.Wall.X
 			, "Front1");
+        ArgumentNullException.ThrowIfNull(box.Side);
 		Add("next on {0}"
 			, box.Side.Wall.X
 			, "Side1");

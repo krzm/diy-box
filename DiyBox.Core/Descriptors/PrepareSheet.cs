@@ -8,6 +8,6 @@ public class PrepareSheet
     {
 		AddLine("Step 1");
 		AddLine("Prepare cardboard sheet");
-		AddLine($"of length {sheet.Size.X} and heigth {sheet.Size.Y}");
+		AddLine($"of length {sheet?.Size?.X} and heigth {sheet?.Size?.Y}");
     }
 }

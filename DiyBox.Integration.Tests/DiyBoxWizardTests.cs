@@ -31,15 +31,15 @@ public class DiyBoxWizardTests
 
         sut.RunWizard(args);
 
-        Assert.Equal(length, Box?.Front.Wall.X);
-        Assert.Equal(heigth, Box?.Front.Wall.Y);
-        Assert.Equal(length, Box?.Front.Fold.X);
-        Assert.Equal(depth/2, Box?.Front.Fold.Y);
+        Assert.Equal(length, Box?.Front?.Wall.X);
+        Assert.Equal(heigth, Box?.Front?.Wall.Y);
+        Assert.Equal(length, Box?.Front?.Fold.X);
+        Assert.Equal(depth/2, Box?.Front?.Fold.Y);
 
-        Assert.Equal(depth, Box?.Side.Wall.X);
-        Assert.Equal(heigth, Box?.Side.Wall.Y);
-        Assert.Equal(depth, Box?.Side.Fold.X);
-        Assert.Equal(length/2, Box?.Side.Fold.Y);
+        Assert.Equal(depth, Box?.Side?.Wall.X);
+        Assert.Equal(heigth, Box?.Side?.Wall.Y);
+        Assert.Equal(depth, Box?.Side?.Fold.X);
+        Assert.Equal(length/2, Box?.Side?.Fold.Y);
 
         Assert.Equal(flap, Box?.WallFlap);
 
@@ -47,8 +47,8 @@ public class DiyBoxWizardTests
         Assert.Equal(isSideWaste, Waste?.IsSideWaste);
         Assert.Equal(wasteHeight, Waste?.WasteHeight);
 
-        Assert.Equal(sheetLength, Sheet?.Size.X);
-        Assert.Equal(sheetHeigth, Sheet?.Size.Y);
+        Assert.Equal(sheetLength, Sheet?.Size?.X);
+        Assert.Equal(sheetHeigth, Sheet?.Size?.Y);
 
         Assert.Equal(
             horizontalMarkers[0]
