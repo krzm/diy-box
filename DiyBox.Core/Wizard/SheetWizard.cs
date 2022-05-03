@@ -6,10 +6,10 @@ namespace DiyBox.Core;
 public class SheetWizard 
     : DiyBoxWizardBase
 {
-    private readonly ISheetCalculator sheetCalculator;
+    private readonly IBoxToSheetCompute sheetCalculator;
 
     public SheetWizard(
-        ISheetCalculator sheetCalculator
+        IBoxToSheetCompute sheetCalculator
         , IDictionary<Descriptors, IDescriptor> descriptor
         , IInput input
         , ILogger logger)
@@ -20,7 +20,7 @@ public class SheetWizard
 
     protected override void Calculate(string[] args)
     {
-        sheetCalculator.Calculate(args);
+        sheetCalculator.Compute(args);
     }
 
     protected override void DefineWizardSteps()

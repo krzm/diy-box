@@ -3,10 +3,10 @@ namespace DiyBox.Core;
 public abstract class MarkerDescriptor<TData>
     : Descriptor<TData>
 {
-	private readonly ITapeMarker tapeMarker;
+	private readonly ITapeMeasureCompute tapeMarker;
 
     protected MarkerDescriptor(
-		ITapeMarker tapeMarker
+		ITapeMeasureCompute tapeMarker
 	)
 	{
         this.tapeMarker = tapeMarker;

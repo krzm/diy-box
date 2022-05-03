@@ -1,16 +1,16 @@
 ﻿namespace DiyBox.Core;
 
 public class MarkSheetVerticallyFront
-	: MarkerDescriptor<IBoxCalculator>
+	: MarkerDescriptor<IDiyBoxCompute>
 {
     public MarkSheetVerticallyFront(
-		ITapeMarker tapeMarker
+		ITapeMeasureCompute tapeMarker
 	) : base(tapeMarker)
 	{
     }
 
     protected override void DefineDescription(
-		IBoxCalculator bc)
+		IDiyBoxCompute bc)
     {
         ArgumentNullException.ThrowIfNull(bc.SheetCalculator);
         var box = bc.SheetCalculator.Box;
@@ -29,7 +29,7 @@ public class MarkSheetVerticallyFront
         }
     }
 
-    private void SetDescription(IBoxCalc box)
+    private void SetDescription(IBoxCompute box)
     {
         ArgumentNullException.ThrowIfNull(box.Front);
 		Add("Next go to top, left line and mark {0} from top going down"
@@ -43,7 +43,7 @@ public class MarkSheetVerticallyFront
             , "Fold2");
     }
 
-    private void SetDescriptionWithWaste(IBoxCalc box, IWaste waste)
+    private void SetDescriptionWithWaste(IBoxCompute box, IWasteCompute waste)
     {
         Add("Next go to top, left line and mark {0} from top going down"
 			, waste.WasteHeight

@@ -6,10 +6,10 @@ namespace DiyBox.Core;
 public class DiyBoxWizard 
     : DiyBoxWizardBase
 {
-    private readonly IBoxCalculator boxCalculator;
+    private readonly IDiyBoxCompute boxCalculator;
 
     public DiyBoxWizard(
-        IBoxCalculator boxCalculator
+        IDiyBoxCompute boxCalculator
         , IDictionary<Descriptors, IDescriptor> descriptor
         , IInput input
         , ILogger logger) 
@@ -20,7 +20,7 @@ public class DiyBoxWizard
 
     protected override void Calculate(string[] args)
     {
-        boxCalculator.Calculate(args);
+        boxCalculator.Compute(args);
     }
 
     protected override void DefineWizardSteps()

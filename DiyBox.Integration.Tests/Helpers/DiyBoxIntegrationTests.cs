@@ -6,33 +6,33 @@ namespace DiyBox.Integration.Tests;
 
 public abstract class DiyBoxIntegrationTests
 {
-    private IBoxCalc? box;
-    private IWaste? waste;
-    private ISheet? sheet;
-    private IDictionary<Markers, ITapeMarker>? markers;
+    private IBoxCompute? box;
+    private IWasteCompute? waste;
+    private ISheetCompute? sheet;
+    private IDictionary<Markers, ITapeMeasureCompute>? markers;
 
-    protected IBoxCalc? Box => box;
-    protected IWaste? Waste => waste;
-    protected ISheet? Sheet => sheet;
-    protected IDictionary<Markers, ITapeMarker>? TapeMarkers => markers;
+    protected IBoxCompute? Box => box;
+    protected IWasteCompute? Waste => waste;
+    protected ISheetCompute? Sheet => sheet;
+    protected IDictionary<Markers, ITapeMeasureCompute>? TapeMarkers => markers;
 
     protected IDiyBoxWizard GetDiyBoxWizard(
         LoggerMock logger
         , IInput input)
     {
-        box = new BoxCalcWithWasteInFolds();
-        sheet = new Sheet();
-        waste = new Waste();
+        box = new BoxWithWasteInFoldsCompute();
+        sheet = new SheetCompute();
+        waste = new WasteCompute();
         markers = GetTapeMarkers();
         var wizard = new DiyBoxWizard(
-            new BoxCalculator(
-                new SheetCalculator(
+            new DiyBoxCompute(
+                new BoxToSheetCompute(
                     new DiyBoxParser()
                     , box
                     , sheet
                 )
                 , waste
-                , new List<ITapeMarker>(markers.Values))
+                , new List<ITapeMeasureCompute>(markers.Values))
                 , GetDescriptorDictionary(markers)
                 , input
                 , logger
@@ -40,18 +40,18 @@ public abstract class DiyBoxIntegrationTests
         return wizard;
     }
 
-    private static Dictionary<Markers, ITapeMarker> GetTapeMarkers()
+    private static Dictionary<Markers, ITapeMeasureCompute> GetTapeMarkers()
     {
-        return new Dictionary<Markers, ITapeMarker>
+        return new Dictionary<Markers, ITapeMeasureCompute>
         {
-            { Markers.Horizontal,  new HorizontalTapeMarker() }
-            , { Markers.VerticalFront, new VerticalFrontTapeMarker() }
-            , { Markers.VerticalSide, new VerticalSideTapeMarker() }
+            { Markers.Horizontal,  new HorizontalTapeMeasureCompute() }
+            , { Markers.VerticalFront, new VerticalFrontTapeMeasureCompute() }
+            , { Markers.VerticalSide, new VerticalSideTapeMeasureCompute() }
         };
     }
 
     private IDictionary<Descriptors, IDescriptor> GetDescriptorDictionary(
-        IDictionary<Markers, ITapeMarker> markers)
+        IDictionary<Markers, ITapeMeasureCompute> markers)
     {
         var d = new Dictionary<Descriptors, IDescriptor>();
         d.Add(

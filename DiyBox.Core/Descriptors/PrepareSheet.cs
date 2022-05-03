@@ -1,10 +1,10 @@
 ﻿namespace DiyBox.Core;
 
 public class PrepareSheet 
-	: Descriptor<Sheet>
+	: Descriptor<SheetCompute>
 {
     protected override void DefineDescription(
-		Sheet sheet)
+		SheetCompute sheet)
     {
 		AddLine("Step 1");
 		AddLine("Prepare cardboard sheet");

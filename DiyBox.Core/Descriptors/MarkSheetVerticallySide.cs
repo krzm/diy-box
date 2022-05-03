@@ -1,16 +1,16 @@
 ﻿namespace DiyBox.Core;
 
 public class MarkSheetVerticallySide 
-	: MarkerDescriptor<IBoxCalculator>
+	: MarkerDescriptor<IDiyBoxCompute>
 {
     public MarkSheetVerticallySide(
-		ITapeMarker tapeMarker
+		ITapeMeasureCompute tapeMarker
 	) : base(tapeMarker)
 	{
     }
 	
     protected override void DefineDescription(
-		IBoxCalculator bc)
+		IDiyBoxCompute bc)
     {
         ArgumentNullException.ThrowIfNull(bc.SheetCalculator);
 		var box = bc.SheetCalculator.Box;
@@ -31,7 +31,7 @@ public class MarkSheetVerticallySide
 		AddLine("Connect horizontally, markers you just did on vertical lines");
     }
 
-    private void SetDescription(IBoxCalc box)
+    private void SetDescription(IBoxCompute box)
     {
         ArgumentNullException.ThrowIfNull(box.Side);
 		Add("From top going dowan, mark line on {0}"
@@ -46,8 +46,8 @@ public class MarkSheetVerticallySide
     }
 
 	private void SetDescriptionWithWaste(
-		IBoxCalc box
-		, IWaste waste)
+		IBoxCompute box
+		, IWasteCompute waste)
     {
 		Add("From top going down, mark line on {0}"
 			, waste.WasteHeight

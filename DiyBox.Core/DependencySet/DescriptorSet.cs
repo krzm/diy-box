@@ -28,20 +28,20 @@ public class DescriptorSet
 		RegisterDescriptor<MarkSheetHorizontally>(
 			Descriptors.MarkSheetHorizontally
 			, new InjectionConstructor(
-				Container.Resolve<ITapeMarker>(
-					nameof(HorizontalTapeMarker))
+				Container.Resolve<ITapeMeasureCompute>(
+					nameof(HorizontalTapeMeasureCompute))
 			));
 		RegisterDescriptor<MarkSheetVerticallyFront>(
 			Descriptors.MarkSheetVerticallyFront
 			, new InjectionConstructor(
-				Container.Resolve<ITapeMarker>(
-					nameof(VerticalFrontTapeMarker))
+				Container.Resolve<ITapeMeasureCompute>(
+					nameof(VerticalFrontTapeMeasureCompute))
 			));
 		RegisterDescriptor<MarkSheetVerticallySide>(
 			Descriptors.MarkSheetVerticallySide
 			, new InjectionConstructor(
-				Container.Resolve<ITapeMarker>(
-					nameof(VerticalSideTapeMarker))
+				Container.Resolve<ITapeMeasureCompute>(
+					nameof(VerticalSideTapeMeasureCompute))
 			));
 		RegisterDescriptor<FoldBox>(
 			Descriptors.FoldBox);

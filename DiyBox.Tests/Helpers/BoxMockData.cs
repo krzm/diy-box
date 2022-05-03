@@ -6,6 +6,4 @@ public record BoxMockData(
     , double Depth
     , double Flap
 )
-{
-
-}
+{}

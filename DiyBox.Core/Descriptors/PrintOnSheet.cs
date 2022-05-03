@@ -1,12 +1,12 @@
 namespace DiyBox.Core;
 
 public class PrintOnSheet 
-	: Descriptor<IBoxCalculator>
+	: Descriptor<IDiyBoxCompute>
 {
     private const string Arrow = "\\|/";
 
     protected override void DefineDescription(
-		IBoxCalculator bc)
+		IDiyBoxCompute bc)
     {
         ArgumentNullException.ThrowIfNull(bc.SheetCalculator);
         ArgumentNullException.ThrowIfNull(bc.SheetCalculator.Sheet);

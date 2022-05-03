@@ -14,6 +14,6 @@ public class DiyBoxWithWasteInFoldsSet
     protected override void RegisterBoxCalc()
     {
         Container
-            .RegisterSingleton<IBoxCalc, BoxCalcWithWasteInFolds>();
+            .RegisterSingleton<IBoxCompute, BoxWithWasteInFoldsCompute>();
     }
 }

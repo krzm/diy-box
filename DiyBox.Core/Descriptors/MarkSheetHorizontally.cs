@@ -1,16 +1,16 @@
 ﻿namespace DiyBox.Core;
 
 public class MarkSheetHorizontally 
-	: MarkerDescriptor<IBoxCalculator>
+	: MarkerDescriptor<IDiyBoxCompute>
 {
     public MarkSheetHorizontally(
-		ITapeMarker tapeMarker
+		ITapeMeasureCompute tapeMarker
 	) : base(tapeMarker)
 	{
     }
 
     protected override void DefineDescription(
-		IBoxCalculator bc)
+		IDiyBoxCompute bc)
     {
         ArgumentNullException.ThrowIfNull(bc.SheetCalculator);
 		var box = bc.SheetCalculator.Box;

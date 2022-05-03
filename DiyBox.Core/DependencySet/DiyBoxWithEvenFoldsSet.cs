@@ -19,22 +19,22 @@ public class DiyBoxWithEvenFoldsSet
             .RegisterSingleton<IArgsParser<Size3d>, DiyBoxParser>();
         RegisterBoxCalc();
         Container
-            .RegisterSingleton<ISheet, Sheet>()
-            .RegisterSingleton<ISheetCalculator, SheetCalculator>()
-            .RegisterSingleton<IWaste, Waste>()
+            .RegisterSingleton<ISheetCompute, SheetCompute>()
+            .RegisterSingleton<IBoxToSheetCompute, BoxToSheetCompute>()
+            .RegisterSingleton<IWasteCompute, WasteCompute>()
 
-            .RegisterSingleton<ITapeMarker, HorizontalTapeMarker>(
-                nameof(HorizontalTapeMarker))
-            .RegisterSingleton<ITapeMarker, VerticalFrontTapeMarker>(
-                nameof(VerticalFrontTapeMarker))
-            .RegisterSingleton<ITapeMarker, VerticalSideTapeMarker>(
-                nameof(VerticalSideTapeMarker))
+            .RegisterSingleton<ITapeMeasureCompute, HorizontalTapeMeasureCompute>(
+                nameof(HorizontalTapeMeasureCompute))
+            .RegisterSingleton<ITapeMeasureCompute, VerticalFrontTapeMeasureCompute>(
+                nameof(VerticalFrontTapeMeasureCompute))
+            .RegisterSingleton<ITapeMeasureCompute, VerticalSideTapeMeasureCompute>(
+                nameof(VerticalSideTapeMeasureCompute))
 
-            .RegisterSingleton<IBoxCalculator, BoxCalculator>(
+            .RegisterSingleton<IDiyBoxCompute, DiyBoxCompute>(
                 new InjectionConstructor(
-                    Container.Resolve<ISheetCalculator>()
-                    , Container.Resolve<IWaste>()
-                    , Container.Resolve<List<ITapeMarker>>()
+                    Container.Resolve<IBoxToSheetCompute>()
+                    , Container.Resolve<IWasteCompute>()
+                    , Container.Resolve<List<ITapeMeasureCompute>>()
                 )
             );
     }
@@ -42,6 +42,6 @@ public class DiyBoxWithEvenFoldsSet
     protected virtual void RegisterBoxCalc()
     {
         Container
-            .RegisterSingleton<IBoxCalc, BoxCalcWithEvenFolds>();
+            .RegisterSingleton<IBoxCompute, BoxWithEvenFoldsCompute>();
     }
 }

@@ -5,6 +5,4 @@ public record WasteMockData(
     , bool IsSideWaste = false
     , double WasteHeigth = 0.0
 )
-{
-
-}
+{}
