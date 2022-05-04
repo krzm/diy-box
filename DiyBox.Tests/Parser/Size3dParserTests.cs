@@ -3,7 +3,7 @@ using Xunit;
 
 namespace DiyBox.Tests;
 
-public class DiyBoxParserTests
+public class Size3dParserTests
 {
 	[Theory]
 	[InlineData(new object[] {
@@ -19,7 +19,7 @@ public class DiyBoxParserTests
 	public void Invalid_number_of_args_throws(
 		string[] args)
 	{
-		var sut = new DiyBoxParser();
+		var sut = new Size3dParser();
 
 		var ex = Assert.Throws<ArgumentException>(
 			"args"
@@ -47,7 +47,7 @@ public class DiyBoxParserTests
 		string[] args
 		, string argName)
 	{
-		var sut = new DiyBoxParser();
+		var sut = new Size3dParser();
 
 		var ex = Assert.Throws<ArgumentException>(
 			argName
@@ -79,7 +79,7 @@ public class DiyBoxParserTests
 		, double depth)
 	{
 		var size = new Size3d(length, height, depth);
-		var sut = new DiyBoxParser();
+		var sut = new Size3dParser();
 
 		var acctual = sut.Parse(args);
 

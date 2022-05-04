@@ -16,7 +16,7 @@ public class DiyBoxWithEvenFoldsSet
     public override void Register()
     {
         Container
-            .RegisterSingleton<IArgsParser<Size3d>, DiyBoxParser>();
+            .RegisterSingleton<IArgsParser<Size3d>, Size3dParser>();
         RegisterBoxCalc();
         Container
             .RegisterSingleton<ISheetCompute, SheetCompute>()

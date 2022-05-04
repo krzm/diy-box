@@ -1,20 +1,19 @@
-﻿using System.Globalization;
+using System.Globalization;
 
 namespace DiyBox.Core;
 
-public class DiyBoxParser 
-	: IArgsParser<Size3d>
+public class Size2dParser 
+	: IArgsParser<Size2d>
 {
-	public Size3d Parse(params string[] args)
+	public Size2d Parse(params string[] args)
 	{
-		if (args.Length != 3)
+		if (args.Length != 2)
 			throw new ArgumentException(
-				"Three args required"
+				"Two args required"
 				, nameof(args));
-		return new Size3d(
+		return new Size2d(
 			ParseNumber(args[0], "Length")
-			, ParseNumber(args[1], "Height")
-			, ParseNumber(args[2], "Depth"));
+			, ParseNumber(args[1], "Height"));
 	}
 
 	private static double ParseNumber(
