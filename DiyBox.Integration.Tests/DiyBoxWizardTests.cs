@@ -4,7 +4,7 @@ using Xunit;
 namespace DiyBox.Integration.Tests;
 
 public class DiyBoxWizardTests
-    : DiyBoxIntegrationTests
+    : DiyBoxWizardIntegrationTests
 {
 	[Theory]
 	[InlineData(new object[] { 15, 10, 20, 5, false, true, 2.5, 75, 30

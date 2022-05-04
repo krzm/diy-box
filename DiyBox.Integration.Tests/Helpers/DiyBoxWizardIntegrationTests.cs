@@ -4,7 +4,7 @@ using Serilog.Wrapper;
 
 namespace DiyBox.Integration.Tests;
 
-public abstract class DiyBoxIntegrationTests
+public abstract class DiyBoxWizardIntegrationTests
 {
     private IBoxCompute? box;
     private IWasteCompute? waste;
@@ -27,7 +27,7 @@ public abstract class DiyBoxIntegrationTests
         var wizard = new DiyBoxWizard(
             new DiyBoxCompute(
                 new BoxToSheetCompute(
-                    new DiyBoxParser()
+                    new Size3dParser()
                     , box
                     , sheet
                 )
