@@ -6,6 +6,12 @@ public  class SheetToBoxCompute
     private readonly IArgsParser<Size2d> parser;
     private readonly IBoxCompute box;
     private readonly ISheetCompute sheet;
+    private double errorX;
+    private double errorY;
+    private bool IsXCorected;
+    private bool IsZCorected;
+    private bool IsYCorected;
+    private int loopCount;
 
     public Size2d? SheetSize { get; private set; }
     public IBoxCompute? Box { get; private set; }
@@ -20,22 +26,51 @@ public  class SheetToBoxCompute
         this.parser = parser;
         this.box = box;
         this.sheet = sheet;
+        IsXCorected = true;
+        IsYCorected = false;
+        IsZCorected = false;
+    }
+
+    private void SwitchXZCorrection()
+    {
+        if(IsXCorected)
+        {
+            IsXCorected = false;
+            IsYCorected = false;
+            IsZCorected = true;
+            return;
+        }
+        if(IsZCorected)
+        {
+            IsXCorected = true;
+            IsYCorected = false;
+            IsZCorected = false;
+            return;
+        }
+    }
+
+    private void SwitchToYCorrection()
+    {
+        IsXCorected = false;
+        IsYCorected = true;
+        IsZCorected = false;
     }
 
     public ISheetToBoxCompute Compute(string[] args)
     {
+        loopCount = 0;
         SheetSize = parser.Parse(args);
-        Compute(GetFirstBoxSize());
-        while (IsErrorInAcceptableAccuracy())
+        var box = GetFirstBoxSize();
+        Compute(box);
+        while (IsErrorInAcceptableAccuracy() == false)
         {
-            Compute(GetCorrectedBoxSize());
+            box = GetCorrectedBoxSize(box);
+            Compute(box);
+            loopCount++;
+            if(loopCount > 20)
+                throw new InvalidOperationException("Terminating compute that cant achive result in 20 steps");
         }
         return this;
-    }
-
-    private Size3d GetCorrectedBoxSize()
-    {
-        throw new NotImplementedException();
     }
 
     private void Compute(Size3d boxSize)
@@ -45,18 +80,65 @@ public  class SheetToBoxCompute
         CalculateError();
     }
 
-    private bool IsErrorInAcceptableAccuracy()
+    private void CalculateError()
     {
-        throw new NotImplementedException();
-    }
-
-    private object CalculateError()
-    {
-        throw new NotImplementedException();
+        ArgumentNullException.ThrowIfNull(SheetSize);
+        ArgumentNullException.ThrowIfNull(Sheet);
+        ArgumentNullException.ThrowIfNull(Sheet.Size);
+        errorX = SheetSize.X - Sheet.Size.X;
+        errorY = SheetSize.Y - Sheet.Size.Y;
     }
 
     private Size3d GetFirstBoxSize()
     {
-        throw new NotImplementedException();
+        ArgumentNullException.ThrowIfNull(SheetSize);
+        var x = (int)(SheetSize.X/4) - 1;
+        var y = (int)(SheetSize.Y/3) - 1;
+        var z = x;
+        return new Size3d(
+            x
+            , y
+            , z
+        );
+    }
+
+    private bool IsErrorInAcceptableAccuracy()
+    {
+        var x = errorX >= 0 && errorX <= 1;
+        if(x && IsYCorected == false)
+        {
+            SwitchToYCorrection();
+        }
+        var y = errorY == 0;
+        if(y & IsYCorected)
+        {
+            IsYCorected = false;
+        }
+        return x && y;
+    }
+
+    private Size3d GetCorrectedBoxSize(Size3d box)
+    {
+        var deltaX = 0.0;
+        if(errorX <= -1) deltaX = -1.0;
+        if(errorX > 1) deltaX = 1.0;
+        var deltaY = 0.0;
+        if(errorY <= -1) deltaY = -1.0;
+        if(errorY >= 1) deltaY = 1.0;
+        var boxX = IsXCorected ? 
+            box.X + deltaX 
+            : box.X;
+        var boxY = IsYCorected ? 
+            box.Y + deltaY 
+            : box.Y;
+        var boxZ = IsZCorected ? 
+            box.Z + deltaX 
+            : box.Z;
+        if(IsXCorected || IsZCorected)
+            SwitchXZCorrection();
+        return new Size3d(
+            boxX
+            , boxY
+            , boxZ);
     }
 }

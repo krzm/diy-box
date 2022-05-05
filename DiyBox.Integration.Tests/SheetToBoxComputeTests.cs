@@ -6,10 +6,13 @@ namespace DiyBox.Integration.Tests;
 public class SheetToBoxComputeTests
 {
 	[Theory]
-	[InlineData(62, 25)]
+	[InlineData(62, 25, 14, 11, 14)]
 	public void SheetSizeConvertsToBox(
 		double length
-		, double height)
+		, double height
+        , double expectedX
+        , double expectedY
+        , double expectedZ)
 	{
         var sut = new SheetToBoxCompute(
             new Size2dParser()
@@ -24,9 +27,9 @@ public class SheetToBoxComputeTests
 
         ArgumentNullException.ThrowIfNull(sut.Box);
         ArgumentNullException.ThrowIfNull(sut.Box.Front);
-        Assert.Equal(15, sut.Box.Front.Wall.X);
-        Assert.Equal(15, sut.Box.Front.Wall.Y);
+        Assert.Equal(expectedX, sut.Box.Front.Wall.X);
+        Assert.Equal(expectedY, sut.Box.Front.Wall.Y);
         ArgumentNullException.ThrowIfNull(sut.Box.Side);
-        Assert.Equal(15, sut.Box.Side.Wall.X);
+        Assert.Equal(expectedZ, sut.Box.Side.Wall.X);
 	}
 }
