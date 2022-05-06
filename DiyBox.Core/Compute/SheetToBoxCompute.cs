@@ -16,6 +16,7 @@ public  class SheetToBoxCompute
     public Size2d? SheetSize { get; private set; }
     public IBoxCompute? Box { get; private set; }
     public ISheetCompute? Sheet { get; private set; }
+    public Size3d? ResultBoxSize { get; private set; }
 
     public SheetToBoxCompute(
         IArgsParser<Size2d> parser
@@ -60,16 +61,17 @@ public  class SheetToBoxCompute
     {
         loopCount = 0;
         SheetSize = parser.Parse(args);
-        var box = GetFirstBoxSize();
-        Compute(box);
+        var boxSize = GetFirstBoxSize();
+        Compute(boxSize);
         while (IsErrorInAcceptableAccuracy() == false)
         {
-            box = GetCorrectedBoxSize(box);
-            Compute(box);
+            boxSize = GetCorrectedBoxSize(boxSize);
+            Compute(boxSize);
             loopCount++;
             if(loopCount > 20)
                 throw new InvalidOperationException("Terminating compute that cant achive result in 20 steps");
         }
+        ResultBoxSize = boxSize;
         return this;
     }
 

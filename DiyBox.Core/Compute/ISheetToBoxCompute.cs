@@ -6,4 +6,5 @@ public interface ISheetToBoxCompute
     Size2d? SheetSize { get; }
     IBoxCompute? Box { get; }
     ISheetCompute? Sheet { get; }
+    Size3d? ResultBoxSize { get; }
 }
