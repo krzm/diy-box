@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using CommandDotNet;
 
 namespace DiyBox.CommandDotNet;
 
-public class SizeArg 
+public class Size2dArg 
     : IArgumentModel
 {
     private const string DimError = "Dimention must be greater than zero";
@@ -13,7 +13,4 @@ public class SizeArg
 
     [Operand(nameof(Height)), Required, Range(0.1, double.MaxValue, ErrorMessage = DimError)]
 	public double Height { get; set; }
-    
-    [Operand(nameof(Depth)), Required, Range(0.1, double.MaxValue, ErrorMessage = DimError)]
-	public double Depth { get; set; }
 }
