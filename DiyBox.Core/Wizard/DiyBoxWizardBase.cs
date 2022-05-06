@@ -34,9 +34,9 @@ public abstract class DiyBoxWizardBase
         }
     }
     
-    protected abstract void Calculate(string[] args);
+    public abstract void Calculate(string[] args);
 
-    protected abstract void DefineWizardSteps();
+    public abstract void DefineWizardSteps();
 
     protected virtual void HandleError(
         ArgumentException ex)

@@ -2,7 +2,8 @@
 
 public enum Wizards 
 {
-	SheetWizard
-    , PrintOnSheet
-    , DiyBoxWizard
+    DiyBoxWizard
+	, BoxToSheetWizard
+    , PrintBoxOnSheet
+    , SheetToBoxWizard
 }

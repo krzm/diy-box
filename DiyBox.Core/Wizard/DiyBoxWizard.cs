@@ -18,12 +18,12 @@ public class DiyBoxWizard
         this.boxCalculator = boxCalculator;
     }
 
-    protected override void Calculate(string[] args)
+    public override void Calculate(string[] args)
     {
         boxCalculator.Compute(args);
     }
 
-    protected override void DefineWizardSteps()
+    public override void DefineWizardSteps()
     {
         var bc = boxCalculator;
         var sc = bc.SheetCalculator;
