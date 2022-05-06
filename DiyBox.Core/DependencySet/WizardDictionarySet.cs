@@ -26,9 +26,10 @@ public class WizardDictionarySet
     {
 		if(d.Count > 0) 
 			return d;
-		Add(c, d, Wizards.SheetWizard);
+		Add(c, d, Wizards.BoxToSheetWizard);
 		Add(c, d, Wizards.DiyBoxWizard);
-		Add(c, d, Wizards.PrintOnSheet);
+		Add(c, d, Wizards.PrintBoxOnSheet);
+		Add(c, d, Wizards.SheetToBoxWizard);
 		return d;
     }
 
