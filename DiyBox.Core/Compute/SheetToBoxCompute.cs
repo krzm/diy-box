@@ -3,6 +3,7 @@ namespace DiyBox.Core;
 public  class SheetToBoxCompute
     : ISheetToBoxCompute
 {
+    private const int MaxCount = 50;
     private readonly IArgsParser<Size2d> parser;
     private readonly IBoxCompute box;
     private readonly ISheetCompute sheet;
@@ -27,6 +28,12 @@ public  class SheetToBoxCompute
         this.parser = parser;
         this.box = box;
         this.sheet = sheet;
+        Reset();
+    }
+
+    private void Reset()
+    {
+        loopCount = 0;
         IsXCorected = true;
         IsYCorected = false;
         IsZCorected = false;
@@ -59,7 +66,7 @@ public  class SheetToBoxCompute
 
     public ISheetToBoxCompute Compute(string[] args)
     {
-        loopCount = 0;
+        Reset();
         SheetSize = parser.Parse(args);
         var boxSize = GetFirstBoxSize();
         Compute(boxSize);
@@ -68,8 +75,8 @@ public  class SheetToBoxCompute
             boxSize = GetCorrectedBoxSize(boxSize);
             Compute(boxSize);
             loopCount++;
-            if(loopCount > 20)
-                throw new InvalidOperationException("Terminating compute that cant achive result in 20 steps");
+            if(MaxCount < loopCount)
+                throw new InvalidOperationException($"Terminating compute that cant achive result in {MaxCount} steps");
         }
         ResultBoxSize = boxSize;
         return this;
