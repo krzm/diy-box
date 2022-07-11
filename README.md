@@ -1,2 +1,2 @@
 # DiyBox
-DiyBox app to calculate how to make diy cardboard box.
+DiyBox lib to calculate how to make diy cardboard box.
